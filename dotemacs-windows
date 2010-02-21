@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My .emacs
+;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
 ;; Time-stamp: <2007-12-02 20:42:02 dfa>
@@ -107,7 +107,7 @@
 ;; FlySpell
 
 ;; using GNU aspell...
-(setq ispell-program-name "aspell")
+(setq ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
 
 ;; ...and try to speedup it
 (setq ispell-extra-args '("--sug-mode=ultra"))
@@ -506,35 +506,6 @@ USA.
 		      (setq i (- i 96)))))
   (toggle-read-only 1))
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; nopaste.pl interface
-;;
-;;   see also http://dfa.slackware.it/projects/perl-snippets/nopaste.pl
-
-(defun nopaste-region-to-file (start end)
-  "Save current region in a temporarily file and return the filename as string"
-  (let ((filename (make-temp-file "nopaste")))
-    (write-region start end filename) ;; thanks to exg
-    filename))
-
-(defun nopaste-send (file)
-  "Send the file to nopaste (using nopaste.pl), the open the default browser
-   to the resulting page."
-  (browse-url 
-   (substring 
-    (shell-command-to-string (concat "nopaste.pl" " " file)) 0 -1)))
-
-(defun nopaste-region (start end)
-  "Send the current region to nopaste."
-  (interactive "r")
-  (nopaste-send (nopaste-region-to-file start end)))
-
-(defun nopaste-buffer ()
-  "Send the current buffer to nopaste."
-  (interactive)
-  (nopaste-send (buffer-file-name)))
-
 ;; helpers (non interactive)
 (defmacro join (join-char &rest others)
   "join as in perl"
@@ -694,32 +665,6 @@ USA.
   (setq mouse-wheel-progressive-speed nil)
   (setq scroll-step 1)
   (setq scroll-conservatively 1))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Console stuff
-
-;; display time in modeline only when in text-mode
-(when (not window-system)
-  ;; show time, load level and mail flag in mode lines
-  (display-time-mode))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Server stuff
-
-(add-hook 'server-switch-hook
-	  (lambda ()
-	    (let ((server-buf (current-buffer)))
-	      (bury-buffer)
-	      (switch-to-buffer-other-frame server-buf))))
-
-(add-hook 'server-done-hook 
-	  'delete-frame)
-
-(add-hook 'server-done-hook
-	  (lambda ()
-	    (kill-buffer nil)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
