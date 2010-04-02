@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-02 13:04:58 dfa>
+;; Time-stamp: <2010-04-02 13:43:31 dfa>
 
 ;; forked from dotemacs, removed some stuff such as:
 ;;   - C/Java mode
@@ -613,7 +613,7 @@ USA.
 (setq TeX-parse-self t)
 (setq TeX-auto-save t)
 
-(add-hook 'latex-mode-hook
+(add-hook 'LaTeX-mode-hook
 	  (lambda ()
 	    ;; italian accents; I don't like the italian keyboard's layout
 	    (define-skeleton latex-e-skeleton
