@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-03-21 17:45:22 dfa>
+;; Time-stamp: <2010-04-02 13:04:58 dfa>
 
 ;; forked from dotemacs, removed some stuff such as:
 ;;   - C/Java mode
@@ -607,6 +607,41 @@ USA.
 (add-to-list 'auto-mode-alist '("THANKS" . text-mode))
 (add-to-list 'auto-mode-alist '("COPYING" . text-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LaTeX
+(setq-default TeX-master nil) 
+(setq TeX-parse-self t)
+(setq TeX-auto-save t)
+
+(add-hook 'latex-mode-hook
+	  (lambda ()
+	    ;; italian accents; I don't like the italian keyboard's layout
+	    (define-skeleton latex-e-skeleton
+	      "Insert \`{e} " nil
+	      > "\\`{e} " _)
+	    (define-skeleton latex-ee-skeleton
+	      "Insert \'{e} " nil
+	      > "\\'{e} " _)
+	    (define-skeleton latex-i-skeleton
+	      "Insert \`{i} " nil
+	      > "\\`{i} " _)
+	    (define-skeleton latex-o-skeleton
+	      "Insert \`{o} " nil
+	      > "\\`{o} " _)
+	    (define-skeleton latex-u-skeleton
+	      "Insert \`{u} " nil
+	      > "\\`{u} " _)	    
+	    (define-skeleton latex-a-skeleton
+	      "Insert \`{a} " nil
+	      > "\\`{a} " _)
+	    
+	    (local-set-key "\C-ce" 'latex-e-skeleton)
+	    (local-set-key "\C-cE" 'latex-ee-skeleton)
+	    (local-set-key "\C-ci" 'latex-i-skeleton)
+	    (local-set-key "\C-co" 'latex-o-skeleton)
+	    (local-set-key "\C-cu" 'latex-u-skeleton)
+	    (local-set-key "\C-ca" 'latex-a-skeleton)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  X window stuff
@@ -647,13 +682,6 @@ USA.
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; LaTeX
-(setq-default TeX-master nil) 
-(setq TeX-parse-self t)
-(setq TeX-auto-save t)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Cleanups
 
 (setq debug-on-error nil)
@@ -671,3 +699,26 @@ USA.
     (load
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values (quote ((TeX-master . tesi)))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
