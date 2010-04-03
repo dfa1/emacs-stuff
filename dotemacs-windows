@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-02 13:43:31 dfa>
+;; Time-stamp: <2010-04-03 20:02:24 dfa>
 
 ;; forked from dotemacs, removed some stuff such as:
 ;;   - C/Java mode
@@ -618,22 +618,22 @@ USA.
 	    ;; italian accents; I don't like the italian keyboard's layout
 	    (define-skeleton latex-e-skeleton
 	      "Insert \`{e} " nil
-	      > "\\`{e} " _)
+	      > "\\`{e}" _)
 	    (define-skeleton latex-ee-skeleton
 	      "Insert \'{e} " nil
-	      > "\\'{e} " _)
+	      > "\\'{e}" _)
 	    (define-skeleton latex-i-skeleton
 	      "Insert \`{i} " nil
-	      > "\\`{i} " _)
+	      > "\\`{i}" _)
 	    (define-skeleton latex-o-skeleton
 	      "Insert \`{o} " nil
-	      > "\\`{o} " _)
+	      > "\\`{o}" _)
 	    (define-skeleton latex-u-skeleton
 	      "Insert \`{u} " nil
-	      > "\\`{u} " _)	    
+	      > "\\`{u}" _)	    
 	    (define-skeleton latex-a-skeleton
 	      "Insert \`{a} " nil
-	      > "\\`{a} " _)
+	      > "\\`{a}" _)
 	    
 	    (local-set-key "\C-ce" 'latex-e-skeleton)
 	    (local-set-key "\C-cE" 'latex-ee-skeleton)
