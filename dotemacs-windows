@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-12 21:33:15 dfa>
+;; Time-stamp: <2010-04-12 21:37:16 dfa>
 
 ;; forked from dotemacs, removed some stuff such as:
 ;;   - C/Java mode
@@ -483,16 +483,18 @@ USA.
   (interactive)
   (switch-to-buffer "*ASCII*")
   (erase-buffer)
-  (save-excursion (let ((i -1))
-		    (insert "ASCII characters 0 thru 127.\n\n")
-		    (insert " Hex  Dec  Char|  Hex  Dec  Char|  Hex  Dec  Char|  Hex  Dec  Char\n")
-		    (while (< i 31)
-		      (insert (format "%4x %4d %4s | %4x %4d %4s | %4x %4d %4s | %4x %4d %4s\n"
-				      (setq i (+ 1  i)) i (single-key-description i)
-				      (setq i (+ 32 i)) i (single-key-description i)
-				      (setq i (+ 32 i)) i (single-key-description i)
-				      (setq i (+ 32 i)) i (single-key-description i)))
-		      (setq i (- i 96)))))
+  (save-excursion 
+    (let ((i -1))
+      (insert "ASCII characters 0 thru 127.\n\n")
+      (insert " Hex  Dec  Char|  Hex  Dec  Char|  Hex  Dec  Char|  Hex  Dec  Char\n")
+      (while (< i 31)
+	(insert 
+	 (format "%4x %4d %4s | %4x %4d %4s | %4x %4d %4s | %4x %4d %4s\n"
+			(setq i (+ 1  i)) i (single-key-description i)
+			(setq i (+ 32 i)) i (single-key-description i)
+			(setq i (+ 32 i)) i (single-key-description i)
+			(setq i (+ 32 i)) i (single-key-description i)))
+	(setq i (- i 96)))))
   (toggle-read-only 1))
 
 ;; helpers (non interactive)
