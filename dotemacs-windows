@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-11 01:25:32 dfa>
+;; Time-stamp: <2010-04-12 21:29:24 dfa>
 
 ;; forked from dotemacs, removed some stuff such as:
 ;;   - C/Java mode
@@ -672,7 +672,7 @@ USA.
   ;; customizing frame look
   (add-to-list 'default-frame-alist '(cursor-color . "grey"))
   (add-to-list 'default-frame-alist '(foreground-color . "grey"))
-  (add-to-list 'default-frame-alist '(background-color . "black"))
+  (add-to-list 'default-frame-alist '(background-color . "MidnightBlue"))
 
   ;; disabling the toolbar and the scrollbar
   (tool-bar-mode -1)
