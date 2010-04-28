@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 23:27:17 dfa>
+;; Time-stamp: <2010-04-28 23:28:07 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -631,15 +631,13 @@ USA.
 
 (add-hook 'erc-mode-hook
           '(lambda ()
+	     (setq erc-user-full-name "Davide Angelocola")
+	     (setq erc-email-userid "davide.angelocola@gmail.com")
 	     (erc-button-mode -1) 
              (require 'erc-pcomplete)
              (pcomplete-erc-setup)
              (erc-completion-mode 1)))
 
-(setq erc-user-full-name "Davide Angelocola")
-(setq erc-email-userid "davide.angelocola@gmail.com")
-
-;;; Finally, connect to the networks.
 (defun erc-maybe ()
   "Connect to IRC."
   (interactive)
