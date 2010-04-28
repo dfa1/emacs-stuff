@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 23:24:00 dfa>
+;; Time-stamp: <2010-04-28 23:27:17 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -631,7 +631,7 @@ USA.
 
 (add-hook 'erc-mode-hook
           '(lambda ()
-(erc-button-mode nil) ;slow
+	     (erc-button-mode -1) 
              (require 'erc-pcomplete)
              (pcomplete-erc-setup)
              (erc-completion-mode 1)))
