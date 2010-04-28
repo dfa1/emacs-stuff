@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 17:26:44 dfa>
+;; Time-stamp: <2010-04-28 17:31:30 dfa>
 
 ;; forked from dotemacs, removed some stuff such as:
 ;;   - C/Java mode
@@ -588,6 +588,20 @@ USA.
 
 	    ;; end
 	    (setq skeleton-end-hook nil)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; clojure-mode
+
+(add-hook 'clojure-mode-hook
+ (lambda ()
+   ;; load slime
+   (load-library "slime")
+   (slime 1)
+
+   (local-set-key (kbd "<tab>") slime-complete-symbol)  
+   
+))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
