@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 21:29:51 dfa>
+;; Time-stamp: <2010-04-28 21:31:06 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -556,7 +556,7 @@ USA.
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
 	    ;; activating paredit-mode (installed via elpa)
-	    (paredit-mode 1)
+	    ;;(paredit-mode 1)
 
 	    ;; add-hook
 	    (define-skeleton elisp-skeleton-add-hook
@@ -601,9 +601,9 @@ USA.
    (load-library "slime")
    (slime 1)
 
-   (local-set-key (kbd "<tab>") slime-complete-symbol)  
+   (local-set-key "" slime-complete-symbol  
    
-))
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -619,13 +619,14 @@ USA.
 ;; text-mode
 
 ;; enabling auto-fill-mode with text-mode
-(add-hook 'text-mode-hook
-	  '(lambda ()
-	     (auto-fill-mode 1)))
+		       
+		  (add-hook 'text-mode-hook
+			    '(lambda ()
+			       (auto-fill-mode 1))))
 
 ;; enter text-mode when opening a file named 'README', 'INSTALL' and so on
-(add-to-list 'auto-mode-alist '("README" . text-mode))
-(add-to-list 'auto-mode-alist '("INSTALL" . text-mode))
+   (add-to-list 'auto-mode-alist '("README" . text-mode)))
+ (add-to-list 'auto-mode-alist '("INSTALL" . text-mode)))
 (add-to-list 'auto-mode-alist '("NEWS" . text-mode))
 (add-to-list 'auto-mode-alist '("TODO" . text-mode))
 (add-to-list 'auto-mode-alist '("AUTHORS" . text-mode))
