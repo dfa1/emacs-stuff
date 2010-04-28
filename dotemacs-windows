@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-12 21:37:16 dfa>
+;; Time-stamp: <2010-04-28 17:26:44 dfa>
 
 ;; forked from dotemacs, removed some stuff such as:
 ;;   - C/Java mode
@@ -590,14 +590,14 @@ USA.
 	    (setq skeleton-end-hook nil)))
 
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; html-mode
 
-(add-hook 'html-mode-hook
-	  (lambda ()
-	    ;; setting indent-line-function
-	    (setq indent-line-function 'indent-relative)))
+;; (add-hook 'html-mode-hook
+;; 	  (lambda ()
+;; 	    ;; setting indent-line-function
+;; 	    (setq indent-line-function 'indent-relative)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; text-mode
@@ -615,6 +615,7 @@ USA.
 (add-to-list 'auto-mode-alist '("AUTHORS" . text-mode))
 (add-to-list 'auto-mode-alist '("THANKS" . text-mode))
 (add-to-list 'auto-mode-alist '("COPYING" . text-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LaTeX
@@ -673,8 +674,8 @@ USA.
   (add-to-list 'special-display-frame-alist '(unsplittable . t))
 
   ;; customizing frame look
-  (add-to-list 'default-frame-alist '(cursor-color . "grey"))
-  (add-to-list 'default-frame-alist '(foreground-color . "grey"))
+  (add-to-list 'default-frame-alist '(cursor-color . "white"))
+  (add-to-list 'default-frame-alist '(foreground-color . "white"))
   (add-to-list 'default-frame-alist '(background-color . "MidnightBlue"))
 
   ;; disabling the toolbar and the scrollbar
