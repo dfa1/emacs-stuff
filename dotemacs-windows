@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 21:31:06 dfa>
+;; Time-stamp: <2010-04-28 21:47:19 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -14,11 +14,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
 
-;; provide a useful error trace if loading this .emacs fails
-(setq debug-on-error t)
-
 ;; my home
-(setq default-directory "C:\\Users\\dfa")
+(setq default-directory "C:/Users/dfa/")
 
 ;; inhibit startup message
 (setq inhibit-startup-message t)
@@ -601,10 +598,10 @@ USA.
    (load-library "slime")
    (slime 1)
 
-   (local-set-key "" slime-complete-symbol  
+   ;; custom keybindings
+   (local-unset-key (kbd "<tab>"))
+   (local-set-key (kbd "<tab>") slime-complete-symbol)))
    
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; html-mode
@@ -619,14 +616,14 @@ USA.
 ;; text-mode
 
 ;; enabling auto-fill-mode with text-mode
-		       
-		  (add-hook 'text-mode-hook
-			    '(lambda ()
-			       (auto-fill-mode 1))))
+
+(add-hook 'text-mode-hook
+	  '(lambda ()
+	     (auto-fill-mode 1)))
 
 ;; enter text-mode when opening a file named 'README', 'INSTALL' and so on
-   (add-to-list 'auto-mode-alist '("README" . text-mode)))
- (add-to-list 'auto-mode-alist '("INSTALL" . text-mode)))
+(add-to-list 'auto-mode-alist '("README" . text-mode))
+(add-to-list 'auto-mode-alist '("INSTALL" . text-mode))
 (add-to-list 'auto-mode-alist '("NEWS" . text-mode))
 (add-to-list 'auto-mode-alist '("TODO" . text-mode))
 (add-to-list 'auto-mode-alist '("AUTHORS" . text-mode))
@@ -735,9 +732,3 @@ USA.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Cleanups
-
-(setq debug-on-error nil)
