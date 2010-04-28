@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 23:28:07 dfa>
+;; Time-stamp: <2010-04-28 23:32:11 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -13,10 +13,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
-
-;; *mental sanity mode*: use C-f for search, and other "Windows" keystrokes..
-(global-set-key "\C-s" 'save-buffer)
-(global-set-key "\C-f" 'isearch-forward-regexp)
 
 ;; my home
 (setq default-directory "C:/Users/dfa/")
@@ -250,7 +246,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My Keybindings
 
-;; remapping some commands
+;; *mental sanity mode*: use C-f for search, and other "Windows" keystrokes..
+(global-set-key "\C-s" 'save-buffer)
+(global-set-key "\C-f" 'isearch-forward-regexp)
 (global-unset-key "\C-x\C-l")
 (global-set-key "\C-x\C-l" 'recenter)
 (global-unset-key "\C-l")
@@ -304,7 +302,7 @@
     (yank)
     (goto-char start)))
 
-(global-set-key "\C-cC" 'clone-region)
+(global-set-key "\C-cC" 'clone-region) ;; FIXME: remap to netbeans key (ctrl-alt-down or ctrl-alt-up
 
 (defun insert-shell-command-output (command)
   "Prompt for a command the insert it's output at point"
@@ -364,9 +362,6 @@
 
 (global-set-key "\M-9" 'decrement-number-at-point)
 
-;; mapping function keys
-(global-set-key [f1] 'info)
-(global-set-key [f2] 'eshell)
 
 ;; insert the date, the time, and the date and time at point. Insert
 ;; the date 31 days hence at point, eventually...
@@ -398,16 +393,10 @@
     (insert " ")
     (insert-time)))
 
-(global-set-key [f5] 'insert-date)
-(global-set-key [f6] 'insert-time)
-(global-set-key [f7] 'insert-time-and-date)
-
 (defun insert-name-and-email()
   (interactive)
   "Insert my signature at point."
   (insert (concat user-full-name " <" user-mail-address ">")))
-
-(global-set-key [f8] 'insert-name-and-email)
 
 (setq gpl-header "This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -432,6 +421,16 @@ USA.
     (insert gpl-header)
     (comment-region mark (+ mark (length gpl-header)))))
 
+
+;; mapping function keys
+(global-set-key [f1] 'info)
+(global-set-key [f2] 'eshell)
+(global-set-key [f3] 'slime)
+(global-set-key [f4] 'erc-maybe)
+(global-set-key [f5] 'insert-date)
+(global-set-key [f6] 'insert-time)
+(global-set-key [f7] 'insert-time-and-date)
+(global-set-key [f8] 'insert-name-and-email)
 (global-set-key [f9] 'insert-gpl-header)
 
 
