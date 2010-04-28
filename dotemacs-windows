@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 23:16:15 dfa>
+;; Time-stamp: <2010-04-28 23:24:00 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -619,7 +619,34 @@ USA.
 
 	    ;; custom keybindings
 	    (local-set-key (kbd "<tab>") 'smart-tab-clojure)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; erc-mode
    
+(require 'erc-join)
+(erc-autojoin-mode 1)
+(setq erc-autojoin-channels-alist
+          '(("freenode.net" "#emacs" "#clojure")))
+
+(add-hook 'erc-mode-hook
+          '(lambda ()
+(erc-button-mode nil) ;slow
+             (require 'erc-pcomplete)
+             (pcomplete-erc-setup)
+             (erc-completion-mode 1)))
+
+(setq erc-user-full-name "Davide Angelocola")
+(setq erc-email-userid "davide.angelocola@gmail.com")
+
+;;; Finally, connect to the networks.
+(defun erc-maybe ()
+  "Connect to IRC."
+  (interactive)
+  (when (y-or-n-p "IRC? ")
+    (erc :server "irc.freenode.net" :port 6667
+                :nick "dfa" :full-name "Davide Angelocola")))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; html-mode
