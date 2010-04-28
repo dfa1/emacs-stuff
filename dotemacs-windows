@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 21:29:22 dfa>
+;; Time-stamp: <2010-04-28 21:29:51 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -148,7 +148,6 @@
 		latex-mode-hook
 		LaTeX-mode-hook
 		html-mode-hook
-		js2-mode-hook
 		css-mode-hook
 		emacs-lisp-mode))
   (font-lock-add-keywords mode 
