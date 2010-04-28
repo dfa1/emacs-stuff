@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 21:47:19 dfa>
+;; Time-stamp: <2010-04-28 23:16:15 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -13,6 +13,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
+
+;; *mental sanity mode*: use C-f for search, and other "Windows" keystrokes..
+(global-set-key "\C-s" 'save-buffer)
+(global-set-key "\C-f" 'isearch-forward-regexp)
 
 ;; my home
 (setq default-directory "C:/Users/dfa/")
@@ -430,7 +434,7 @@ USA.
 
 (global-set-key [f9] 'insert-gpl-header)
 
-  
+
 ;; ManHtml
 ;; source:
 ;;   http://www.emacswiki.org/cgi-bin/wiki/ManHtml
@@ -489,10 +493,10 @@ USA.
       (while (< i 31)
 	(insert 
 	 (format "%4x %4d %4s | %4x %4d %4s | %4x %4d %4s | %4x %4d %4s\n"
-			(setq i (+ 1  i)) i (single-key-description i)
-			(setq i (+ 32 i)) i (single-key-description i)
-			(setq i (+ 32 i)) i (single-key-description i)
-			(setq i (+ 32 i)) i (single-key-description i)))
+		 (setq i (+ 1  i)) i (single-key-description i)
+		 (setq i (+ 32 i)) i (single-key-description i)
+		 (setq i (+ 32 i)) i (single-key-description i)
+		 (setq i (+ 32 i)) i (single-key-description i)))
 	(setq i (- i 96)))))
   (toggle-read-only 1))
 
@@ -546,8 +550,8 @@ USA.
 ;; keybindings
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
-	    ;; rebind lisp-complete-symbol to M-]
-	    (local-set-key "\M-]" 'lisp-complete-symbol)))
+	    ;; rebind lisp-complete-symbol to TAB
+	    (local-set-key (kbd "<tab>") 'lisp-complete-symbol)))
 
 ;; templates
 (add-hook 'emacs-lisp-mode-hook
@@ -590,17 +594,31 @@ USA.
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; clojure-mode
+;; clojure-mode + slime
+
+;; a modified version from http://www.emacswiki.org/emacs/TabCompletion
+(defun smart-tab-clojure ()
+  "This smart tab is minibuffer compliant: it acts as usual in
+   the minibuffer. Else, if mark is active, indents region. Else if
+   point is at the end of a symbol, expands it. Else indents the
+   current line."
+  (interactive)
+  (if (string-match "Minibuf" (buffer-name))
+      (unless (minibuffer-complete)
+	(dabbrev-expand nil))
+    (if mark-active
+	(indent-region (region-beginning)
+		       (region-end))
+      (if (looking-at "\\>")
+	  (slime-complete-symbol)
+	(indent-for-tab-command)))))
 
 (add-hook 'clojure-mode-hook
- (lambda ()
-   ;; load slime
-   (load-library "slime")
-   (slime 1)
+	  (lambda ()
+	    (load-library "slime")
 
-   ;; custom keybindings
-   (local-unset-key (kbd "<tab>"))
-   (local-set-key (kbd "<tab>") slime-complete-symbol)))
+	    ;; custom keybindings
+	    (local-set-key (kbd "<tab>") 'smart-tab-clojure)))
    
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
