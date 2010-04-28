@@ -2,20 +2,23 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 17:31:30 dfa>
+;; Time-stamp: <2010-04-28 21:29:22 dfa>
 
-;; forked from dotemacs, removed some stuff such as:
+;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
 ;;   - perl mode
 ;;   - m4/autoconf mode
 ;;   - muse 
-;;   - other stuff related to gentoo linux
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
 
 ;; provide a useful error trace if loading this .emacs fails
 (setq debug-on-error t)
+
+;; my home
+(setq default-directory "C:\\Users\\dfa")
 
 ;; inhibit startup message
 (setq inhibit-startup-message t)
