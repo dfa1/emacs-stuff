@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-28 23:32:11 dfa>
+;; Time-stamp: <2010-04-29 09:16:35 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -626,7 +626,7 @@ USA.
 (require 'erc-join)
 (erc-autojoin-mode 1)
 (setq erc-autojoin-channels-alist
-          '(("freenode.net" "#emacs" "#clojure")))
+          '(("freenode.net" "#clojure")))
 
 (add-hook 'erc-mode-hook
           '(lambda ()
