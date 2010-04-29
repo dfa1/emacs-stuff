@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-29 10:44:49 dfa>
+;; Time-stamp: <2010-04-29 10:45:24 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -128,6 +128,7 @@
 ;; enable flyspell-prog-mode for some modes
 (dolist (hook '(html-mode-hook
 		css-mode-hook
+		clojure-mode-hook
 		emacs-lisp-mode-hook))
   (add-hook hook (lambda ()
 		   (flyspell-prog-mode))))
