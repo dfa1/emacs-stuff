@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-29 09:33:21 dfa>
+;; Time-stamp: <2010-04-29 10:36:43 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -615,7 +615,7 @@ USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; clojure-mode 
-;; (see also slime)
+;; (see also slime and http://wiki.unto.net/setting-up-clojure-and-slime)
 
 (add-hook 'clojure-mode-hook
 	  (lambda ()
