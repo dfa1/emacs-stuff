@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-29 10:36:43 dfa>
+;; Time-stamp: <2010-04-29 10:44:49 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -89,8 +89,7 @@
 (setq completion-ignored-extensions
       '(".o" ".lo" ".so" ".elc" ".class"))
 
-;; this is also of interest, it auto-magically does a "chmod u+x"
-;; when you save a script file (starting with "#!")
+;; do a "chmod u+x" when you save a script file (starting with "#!")
 (add-hook 'after-save-hook
 	  'executable-make-buffer-file-executable-if-script-p)
 
