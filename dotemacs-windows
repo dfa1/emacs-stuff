@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-29 09:22:32 dfa>
+;; Time-stamp: <2010-04-29 09:33:21 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -525,6 +525,23 @@ USA.
 (global-set-key "\C-c\C-c" 'mode-compile)
 (global-set-key "\C-c\C-k" 'mode-compile-kill)
 
+;; a modified version from http://www.emacswiki.org/emacs/TabCompletion
+(defun smart-tab (completion-hook)
+  "This smart tab is minibuffer compliant: it acts as usual in
+   the minibuffer. Else, if mark is active, indents region. Else if
+   point is at the end of a symbol, expands it using the `completion-hook'. 
+   Else indents the current line."
+  (interactive)
+  (if (string-match "Minibuf" (buffer-name))
+      (unless (minibuffer-complete)
+	(dabbrev-expand nil))
+    (if mark-active
+	(indent-region (region-beginning)
+		       (region-end))
+      (if (looking-at "\\>")
+	  (funcall completion-hook)
+	(indent-for-tab-command)))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs-lisp
@@ -549,8 +566,12 @@ USA.
 ;; keybindings
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
+	    (defun complete-elisp () 
+	      (interactive)
+	      (smart-tab 'lisp-complete-symbol))
+	    
 	    ;; rebind lisp-complete-symbol to TAB
-	    (local-set-key (kbd "<tab>") 'lisp-complete-symbol)))
+	    (local-set-key (kbd "<tab>") 'complete-elisp)))
 
 ;; templates
 (add-hook 'emacs-lisp-mode-hook
@@ -593,30 +614,17 @@ USA.
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; clojure-mode + slime
-
-;; a modified version from http://www.emacswiki.org/emacs/TabCompletion
-(defun smart-tab-clojure ()
-  "This smart tab is minibuffer compliant: it acts as usual in
-   the minibuffer. Else, if mark is active, indents region. Else if
-   point is at the end of a symbol, expands it. Else indents the
-   current line."
-  (interactive)
-  (if (string-match "Minibuf" (buffer-name))
-      (unless (minibuffer-complete)
-	(dabbrev-expand nil))
-    (if mark-active
-	(indent-region (region-beginning)
-		       (region-end))
-      (if (looking-at "\\>")
-	  (slime-complete-symbol)
-	(indent-for-tab-command)))))
+;; clojure-mode 
+;; (see also slime)
 
 (add-hook 'clojure-mode-hook
 	  (lambda ()
+	    (defun complete-clojure () 
+	      (interactive)
+	      (smart-tab 'slime-complete-symbol))
 
 	    ;; custom keybindings
-	    (local-set-key (kbd "<tab>") 'smart-tab-clojure)))
+	    (local-set-key (kbd "<tab>") 'complete-clojure)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
