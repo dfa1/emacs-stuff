@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-29 10:45:24 dfa>
+;; Time-stamp: <2010-04-29 10:53:30 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -619,11 +619,19 @@ USA.
 
 (add-hook 'clojure-mode-hook
 	  (lambda ()
+	    ;; TODO: call (use 'clojure.contrib.repl-utils) 
+
+	    ;; custom keybindings
+	    (defun switch-to-repl () 
+	      (interactive)
+	      (switch-to-buffer "*slime-repl clojure*"))
+
+	    (local-set-key "\C-i" 'switch-to-repl)
+
 	    (defun complete-clojure () 
 	      (interactive)
 	      (smart-tab 'slime-complete-symbol))
 
-	    ;; custom keybindings
 	    (local-set-key (kbd "<tab>") 'complete-clojure)))
 
 
