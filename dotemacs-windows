@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-29 09:18:45 dfa>
+;; Time-stamp: <2010-04-29 09:22:32 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -594,7 +594,6 @@ USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; clojure-mode + slime
-(require 'slime)
 
 ;; a modified version from http://www.emacswiki.org/emacs/TabCompletion
 (defun smart-tab-clojure ()
@@ -761,6 +760,8 @@ USA.
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+;; must be loaded after ELPA
+(require 'slime)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
