@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-29 10:53:30 dfa>
+;; Time-stamp: <2010-04-29 22:26:19 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -421,7 +421,6 @@ USA.
     (insert gpl-header)
     (comment-region mark (+ mark (length gpl-header)))))
 
-
 ;; mapping function keys
 (global-set-key [f1] 'info)
 (global-set-key [f2] 'eshell)
@@ -615,7 +614,7 @@ USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; clojure-mode 
-;; (see also slime and http://wiki.unto.net/setting-up-clojure-and-slime)
+;; (TODO: http://wiki.unto.net/setting-up-clojure-and-slime)
 
 (add-hook 'clojure-mode-hook
 	  (lambda ()
