@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-30 21:48:51 dfa>
+;; Time-stamp: <2010-04-30 21:57:47 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -753,7 +753,8 @@ USA.
   (setq special-display-buffer-names
 	(nconc '("*Backtrace*"
 		 "*vc-change-log*"
-		 "*VC-log*")
+		 "*VC-log*"
+		 "hg push") ;; must match mercurial-push-cwd
 	       special-display-buffer-names))
 
   ;; display those special buffer frames without a tool bar
