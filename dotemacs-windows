@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-30 08:41:22 dfa>
+;; Time-stamp: <2010-04-30 20:10:05 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -438,6 +438,9 @@ USA.
 ;;   http://www.emacswiki.org/cgi-bin/wiki/ManHtml
 (setq man-local-alist
       '(
+	;; Clojure
+	("clojure" "http://richhickey.github.com/clojure/clojure.core-api.html")
+
 	;; Java
 	("java5" "http://java.sun.com/j2se/1.5.0/docs/api/") 
 
