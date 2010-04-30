@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-30 20:10:05 dfa>
+;; Time-stamp: <2010-04-30 20:11:00 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -421,17 +421,6 @@ USA.
     (insert gpl-header)
     (comment-region mark (+ mark (length gpl-header)))))
 
-;; mapping function keys
-(global-set-key [f1] 'info)
-(global-set-key [f2] 'eshell)
-(global-set-key [f3] 'slime)
-(global-set-key [f4] 'erc-maybe)
-(global-set-key [f5] 'insert-date)
-(global-set-key [f6] 'insert-time)
-(global-set-key [f7] 'insert-time-and-date)
-(global-set-key [f8] 'insert-name-and-email)
-(global-set-key [f9] 'insert-gpl-header)
-
 
 ;; ManHtml
 ;; source:
@@ -456,6 +445,17 @@ USA.
      (list page)))
   (browse-url (cadr (assoc what man-local-alist))))
 
+
+;; mapping function keys
+(global-set-key [f1] 'info)
+(global-set-key [f2] 'eshell)
+(global-set-key [f3] 'slime)
+(global-set-key [f4] 'erc-maybe)
+(global-set-key [f5] 'insert-date)
+(global-set-key [f6] 'insert-time)
+(global-set-key [f7] 'insert-time-and-date)
+(global-set-key [f8] 'insert-name-and-email)
+(global-set-key [f9] 'insert-gpl-header)
 (global-set-key [f10] 'man-local)
 
 
