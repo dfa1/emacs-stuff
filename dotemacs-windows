@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-30 21:57:47 dfa>
+;; Time-stamp: <2010-04-30 23:39:59 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -13,6 +13,8 @@
 ;; TODO:
 ;;   - F3 open/returns to REPL
 ;;   - F4 open/returns to ERC
+;;   - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
+;;   - call (use 'clojure.contrib.repl-utils) with repl-hook
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -474,7 +476,7 @@ USA.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Handy macros
 
-(setq local-vars "Local Variables:\n\nEnd:\n") ;; TODO: better with skeletons
+(setq local-vars "Local Variables:\n\nEnd:\n") 
 
 (defun insert-local-variables ()
   "Insert local variables section at point"
@@ -579,7 +581,7 @@ USA.
 (add-hook 'after-save-hook 'compile-dotemacs)
 
 ;; use emacs-lisp-mode for dotemacs
-(add-to-list 'auto-mode-alist '("dotemacs" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("dotemacs" "dotemacs-windows" . emacs-lisp-mode))
 
 ;; keybindings
 (add-hook 'emacs-lisp-mode-hook
@@ -633,12 +635,9 @@ USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; clojure-mode 
-;; (TODO: http://wiki.unto.net/setting-up-clojure-and-slime)
 
 (add-hook 'clojure-mode-hook
 	  (lambda ()
-	    ;; TODO: call (use 'clojure.contrib.repl-utils) 
-
 	    ;; custom keybindings
 	    (defun switch-to-repl () 
 	      (interactive)
