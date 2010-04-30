@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-30 20:31:06 dfa>
+;; Time-stamp: <2010-04-30 21:48:51 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -202,7 +202,9 @@
 ;; mercurial push 
 (defun mercurial-push-cwd () 
   (interactive)
-  (vc-do-command "*Messages*" `async' "hg" "." "push"))
+  (generate-new-buffer "hg push")
+  (switch-to-buffer "hg push")
+  (vc-do-command "hg push" `async' "hg" nil "push"))
 
 (global-set-key "\C-xvp" 'mercurial-push-cwd)
 
@@ -536,6 +538,10 @@ USA.
 
 (global-set-key "\C-c\C-c" 'mode-compile)
 (global-set-key "\C-c\C-k" 'mode-compile-kill)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; lisp completion 
 
 ;; a modified version from http://www.emacswiki.org/emacs/TabCompletion
 (defun smart-tab (completion-hook)
