@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-30 20:12:32 dfa>
+;; Time-stamp: <2010-04-30 20:31:06 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -11,7 +11,6 @@
 ;;   - muse 
 
 ;; TODO:
-;;   - mercurial push C-x v p
 ;;   - F3 open/returns to REPL
 ;;   - F4 open/returns to ERC
 
@@ -156,7 +155,6 @@
 			  '(("\\(XXX\\|FIXME\\|TODO\\)" 
 			     1 font-lock-warning-face prepend))))
 
-
 ;; other customizations
 (setq font-lock-maximum-decoration t
       font-lock-maximum-size nil)
@@ -200,6 +198,13 @@
 
 ;; automatically follow symlinks
 (setq vc-follow-symlinks t)
+
+;; mercurial push 
+(defun mercurial-push-cwd () 
+  (interactive)
+  (vc-do-command "*Messages*" `async' "hg" "." "push"))
+
+(global-set-key "\C-xvp" 'mercurial-push-cwd)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
