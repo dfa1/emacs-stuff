@@ -2,13 +2,18 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-30 20:11:00 dfa>
+;; Time-stamp: <2010-04-30 20:12:32 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
 ;;   - perl mode
 ;;   - m4/autoconf mode
 ;;   - muse 
+
+;; TODO:
+;;   - mercurial push C-x v p
+;;   - F3 open/returns to REPL
+;;   - F4 open/returns to ERC
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
