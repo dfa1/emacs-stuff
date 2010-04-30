@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-29 22:26:19 dfa>
+;; Time-stamp: <2010-04-30 08:41:22 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -655,8 +655,10 @@ USA.
   "Connect to IRC."
   (interactive)
   (when (y-or-n-p "IRC? ")
-    (erc :server "irc.freenode.net" :port 6667
-                :nick "dfa" :full-name "Davide Angelocola")))
+    (erc :server "irc.freenode.net" 
+	 :port 6667
+	 :nick "DavideAngelocola" 
+	 :full-name "Davide Angelocola")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
