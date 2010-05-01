@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-30 23:39:59 dfa>
+;; Time-stamp: <2010-05-01 21:48:32 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -11,7 +11,6 @@
 ;;   - muse 
 
 ;; TODO:
-;;   - F3 open/returns to REPL
 ;;   - F4 open/returns to ERC
 ;;   - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
 ;;   - call (use 'clojure.contrib.repl-utils) with repl-hook
@@ -204,9 +203,9 @@
 ;; mercurial push 
 (defun mercurial-push-cwd () 
   (interactive)
-  (generate-new-buffer "hg push")
-  (switch-to-buffer "hg push")
-  (vc-do-command "hg push" `async' "hg" nil "push"))
+  (generate-new-buffer "*hg push*")
+  (switch-to-buffer "*hg push*")
+  (vc-do-command "*hg push*" `async' "hg" nil "push"))
 
 (global-set-key "\C-xvp" 'mercurial-push-cwd)
 
@@ -316,7 +315,7 @@
     (yank)
     (goto-char start)))
 
-(global-set-key "\C-cC" 'clone-region) ;; FIXME: remap to netbeans key (ctrl-alt-down or ctrl-alt-up
+(global-set-key "\C-cC" 'clone-region) 
 
 (defun insert-shell-command-output (command)
   "Prompt for a command the insert it's output at point"
@@ -459,11 +458,10 @@ USA.
      (list page)))
   (browse-url (cadr (assoc what man-local-alist))))
 
-
 ;; mapping function keys
 (global-set-key [f1] 'info)
 (global-set-key [f2] 'eshell)
-(global-set-key [f3] 'slime)
+(global-set-key [f3] 'force-swith-to-slime)
 (global-set-key [f4] 'erc-maybe)
 (global-set-key [f5] 'insert-date)
 (global-set-key [f6] 'insert-time)
@@ -639,17 +637,24 @@ USA.
 (add-hook 'clojure-mode-hook
 	  (lambda ()
 	    ;; custom keybindings
-	    (defun switch-to-repl () 
-	      (interactive)
-	      (switch-to-buffer "*slime-repl clojure*"))
-
-	    (local-set-key "\C-i" 'switch-to-repl)
-
 	    (defun complete-clojure () 
 	      (interactive)
 	      (smart-tab 'slime-complete-symbol))
 
 	    (local-set-key (kbd "<tab>") 'complete-clojure)))
+
+; slime-repl customisation
+(add-hook 'slime-repl-hook
+ (lambda ()
+   (slime-repl-eval-string "(set! *print-length* 10)")
+   (slime-repl-eval-string "(use 'clojure.contrib.repl-utils)")))
+
+;; slime (mapped to F3)
+(defun force-swith-to-slime() 
+  (interactive)
+  (if (slime-connected-p)
+    (slime-switch-to-output-buffer)
+    (slime)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -753,7 +758,7 @@ USA.
 	(nconc '("*Backtrace*"
 		 "*vc-change-log*"
 		 "*VC-log*"
-		 "hg push") ;; must match mercurial-push-cwd
+		 "*hg push*") ;; must match mercurial-push-cwd
 	       special-display-buffer-names))
 
   ;; display those special buffer frames without a tool bar
@@ -811,3 +816,6 @@ USA.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+;; open recent files at init
+(recentf-open-files)
