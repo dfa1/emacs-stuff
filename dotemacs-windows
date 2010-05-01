@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-01 21:48:32 dfa>
+;; Time-stamp: <2010-05-01 21:50:17 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -20,7 +20,7 @@
 ;; Variables
 
 ;; my home
-(setq default-directory "C:/Users/dfa/")
+(setq default-directory "c:/Users/dfa/")
 
 ;; inhibit startup message
 (setq inhibit-startup-message t)
