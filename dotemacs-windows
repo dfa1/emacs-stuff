@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-01 21:08:04 dfa>
+;; Time-stamp: <2010-05-01 21:09:06 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -816,5 +816,5 @@ USA.
   ;; If there is more than one, they won't work right.
  )
 
-;; start with recent file
+;; start with recent files
 (recentf-open-files)
