@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-01 21:09:06 dfa>
+;; Time-stamp: <2010-05-01 21:22:08 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -11,7 +11,6 @@
 ;;   - muse 
 
 ;; TODO:
-;;   - F3 open/returns to REPL
 ;;   - F4 open/returns to ERC
 ;;   - remap clone-line to netbeans key (ctrl-alt-down or ctrl-alt-up)
 
@@ -651,7 +650,7 @@ USA.
 ;; slime (mapped to F3)
 (defun force-swith-to-slime() 
   (interactive)
-  (if (boundp slime-mode)
+  (if (slime-connected-p)
     (slime-switch-to-output-buffer)
     (slime)))
 
