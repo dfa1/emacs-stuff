@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-04-30 21:57:47 dfa>
+;; Time-stamp: <2010-05-01 20:31:13 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -13,7 +13,7 @@
 ;; TODO:
 ;;   - F3 open/returns to REPL
 ;;   - F4 open/returns to ERC
-
+;;   - remap clone-line to netbeans key (ctrl-alt-down or ctrl-alt-up)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
@@ -202,9 +202,9 @@
 ;; mercurial push 
 (defun mercurial-push-cwd () 
   (interactive)
-  (generate-new-buffer "hg push")
-  (switch-to-buffer "hg push")
-  (vc-do-command "hg push" `async' "hg" nil "push"))
+  (generate-new-buffer "*hg push*")
+  (switch-to-buffer "*hg push*")
+  (vc-do-command "*hg push*" `async' "hg" nil "push"))
 
 (global-set-key "\C-xvp" 'mercurial-push-cwd)
 
@@ -314,7 +314,7 @@
     (yank)
     (goto-char start)))
 
-(global-set-key "\C-cC" 'clone-region) ;; FIXME: remap to netbeans key (ctrl-alt-down or ctrl-alt-up
+(global-set-key "\C-cC" 'clone-region) 
 
 (defun insert-shell-command-output (command)
   "Prompt for a command the insert it's output at point"
@@ -633,24 +633,21 @@ USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; clojure-mode 
-;; (TODO: http://wiki.unto.net/setting-up-clojure-and-slime)
 
 (add-hook 'clojure-mode-hook
 	  (lambda ()
-	    ;; TODO: call (use 'clojure.contrib.repl-utils) 
-
 	    ;; custom keybindings
-	    (defun switch-to-repl () 
-	      (interactive)
-	      (switch-to-buffer "*slime-repl clojure*"))
-
-	    (local-set-key "\C-i" 'switch-to-repl)
-
 	    (defun complete-clojure () 
 	      (interactive)
 	      (smart-tab 'slime-complete-symbol))
 
 	    (local-set-key (kbd "<tab>") 'complete-clojure)))
+
+; slime-repl customisation
+(add-hook 'slime-repl-hook
+ (lambda ()
+   (slime-repl-eval-string "(set! *print-length* 10)")
+   (slime-repl-eval-string "(use 'clojure.contrib.repl-utils)")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -754,7 +751,7 @@ USA.
 	(nconc '("*Backtrace*"
 		 "*vc-change-log*"
 		 "*VC-log*"
-		 "hg push") ;; must match mercurial-push-cwd
+		 "*hg push*") ;; must match mercurial-push-cwd
 	       special-display-buffer-names))
 
   ;; display those special buffer frames without a tool bar
