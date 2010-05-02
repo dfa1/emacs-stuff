@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 15:12:13 dfa>
+;; Time-stamp: <2010-05-02 15:13:05 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -310,7 +310,7 @@
   (yank)
   (beginning-of-line))
 
-(global-set-key [C-M-down] 'clone-line-below)
+(global-set-key [C-S-down] 'clone-line-below)
 
 (defun clone-line-above()
   "Copy the current line above."
@@ -322,7 +322,7 @@
   (yank)
   (beginning-of-line))
 
-(global-set-key [C-M-up] 'clone-line-above)
+(global-set-key [C-S-up] 'clone-line-above)
 
 ;; (defun clone-region ()
 ;;   "Copy this region after itself."
