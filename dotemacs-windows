@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 15:13:05 dfa>
+;; Time-stamp: <2010-05-02 15:34:35 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -308,9 +308,7 @@
   (yank)
   (newline)
   (yank)
-  (beginning-of-line))
-
-(global-set-key [C-S-down] 'clone-line-below)
+  (beginning-of-line)))
 
 (defun clone-line-above()
   "Copy the current line above."
@@ -322,18 +320,28 @@
   (yank)
   (beginning-of-line))
 
-(global-set-key [C-S-up] 'clone-line-above)
+(defun clone-region ()
+  "Copy the current region after itself."
+  (interactive)
+  (let ((start (region-beginning))) 
+    (kill-ring-save (region-beginning) (region-end))
+    (yank)
+    (goto-char start)))
 
-;; (defun clone-region ()
-;;   "Copy this region after itself."
-;;   (interactive)
-;;   (let ((start (dot-marker))) ;; FIXME: dot-marker is missing
-;;     (kill-ring-save (region-beginning) (region-end))
-;;     (yank)
-;;     (goto-char start)))
+(global-set-key [C-S-down] 
+		'(lambda () 
+		   (interactive)
+		   (if (region-active-p)
+		       (clone-region)
+		     (clone-line-below))))
 
-;; (global-set-key "\C-cC" 'clone-region) 
+(global-set-key [C-S-up] '(lambda () 
+		   (interactive)
+		   (if (region-active-p)
+		       (clone-region)
+		     (clone-line-above))))
 
+;; other special commands
 (defun insert-shell-command-output (command)
   "Prompt for a command the insert it's output at point"
   (interactive "sInsert command output: ")
