@@ -2,14 +2,17 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 14:38:52 dfa>
-
-;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
-;;   - C/Java mode
-;;   - perl mode
-;;   - m4/autoconf mode
-;;   - muse 
-
+;; Time-stamp: <2010-05-02 14:44:22 dfa>
+;;
+;; forked from "dotemacs" (no longer maintained):
+;;   - removed C/Java mode customizations
+;;   - ditto for perl 
+;;   - ditto for m4/autoconf 
+;;   - ditto for muse 
+;;   - ditto for other Gentoo Linux stuff
+;;   - added clojure/slime
+;;   - 
+;;
 ;; TODO:
 ;;   - F4 open/returns to ERC
 ;;   - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
@@ -564,15 +567,14 @@ USA.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs-lisp
 
-;; enter emacs-lisp-mode when opening a file named 'dotemacs'
+;; bytecompile dotemacs 
 (require 'bytecomp)
 
 (defun compile-dotemacs ()
-  "Compile the dotemacs file"
+  "Compile the dotemacs file."
   (interactive)
-  (if (string= (buffer-file-name)
-	       (expand-file-name (concat
-				  default-directory "dotemacs")))
+  (if (string= (buffer-file-name) 
+	       (expand-file-name (concat default-directory "dotemacs")))
       (byte-compile-file (buffer-file-name))))
 
 ;; autocompile dotemacs at save
