@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 21:16:23 dfa>
+;; Time-stamp: <2010-05-02 21:17:24 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -305,7 +305,7 @@
   (yank)
   (newline)
   (yank)
-  (beginning-of-line)))
+  (beginning-of-line))
 
 (defun clone-line-above()
   "Copy the current line above."
