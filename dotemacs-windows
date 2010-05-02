@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 14:47:40 dfa>
+;; Time-stamp: <2010-05-02 15:07:32 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -299,8 +299,9 @@
 
 (global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
 
-(defun clone-line()
-  "Copy this line after itself."
+;; clone line as on netbeans
+(defun clone-line-below()
+  "Copy the current line below."
   (interactive)
   (beginning-of-line)
   (kill-line)
@@ -309,17 +310,29 @@
   (yank)
   (beginning-of-line))
 
-(global-set-key "\C-cc" 'clone-line)
+(global-set-key [C-M-down] 'clone-line-below)
 
-(defun clone-region ()
-  "Copy this region after itself."
+(defun clone-line-above()
+  "Copy the current line above."
   (interactive)
-  (let ((start (dot-marker))) ;; FIXME: dot-marker is missing
-    (kill-ring-save (region-beginning) (region-end))
-    (yank)
-    (goto-char start)))
+  (beginning-of-line)
+  (kill-line)
+  (yank)
+  (newline)
+  (yank)
+  (beginning-of-line))
 
-(global-set-key "\C-cC" 'clone-region) 
+(global-set-key [C-M-up] 'clone-line-above)
+
+;; (defun clone-region ()
+;;   "Copy this region after itself."
+;;   (interactive)
+;;   (let ((start (dot-marker))) ;; FIXME: dot-marker is missing
+;;     (kill-ring-save (region-beginning) (region-end))
+;;     (yank)
+;;     (goto-char start)))
+
+;; (global-set-key "\C-cC" 'clone-region) 
 
 (defun insert-shell-command-output (command)
   "Prompt for a command the insert it's output at point"
