@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 15:34:35 dfa>
+;; Time-stamp: <2010-05-02 15:40:38 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -692,7 +692,7 @@ USA.
 (require 'erc-join)
 (erc-autojoin-mode 1)
 (setq erc-autojoin-channels-alist
-          '(("freenode.net" "#clojure")))
+          '(("freenode.net" "#clojure" "#emacs")))
 
 (add-hook 'erc-mode-hook
           '(lambda ()
@@ -709,7 +709,7 @@ USA.
   (when (y-or-n-p "IRC? ")
     (erc :server "irc.freenode.net" 
 	 :port 6667
-	 :nick "DavideAngelocola" 
+	 :nick "dfa2" 
 	 :full-name "Davide Angelocola")))
 
 
