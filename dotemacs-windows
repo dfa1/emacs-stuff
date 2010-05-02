@@ -1,8 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My .emacs for windows
+;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 15:40:38 dfa>
+;; Time-stamp: <2010-05-02 21:16:23 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -11,7 +11,7 @@
 ;;   - ditto for muse 
 ;;   - ditto for other Gentoo Linux stuff
 ;;   - added clojure/slime
-;;   - 
+;;   - improved clone lines 
 ;;
 ;; TODO:
 ;;   - F4 open/returns to ERC
@@ -109,9 +109,6 @@
 (add-hook 'comint-output-filter-functions 
 	  'comint-watch-for-password-prompt)
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Minor modes
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; FlySpell
