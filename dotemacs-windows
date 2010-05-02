@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 15:07:32 dfa>
+;; Time-stamp: <2010-05-02 15:12:13 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -479,6 +479,7 @@ USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; mapping function keys
+
 (global-set-key [f1] 'info)
 (global-set-key [f2] 'eshell)
 (global-set-key [f3] 'force-swith-to-slime)
@@ -489,6 +490,7 @@ USA.
 (global-set-key [f8] 'insert-name-and-email)
 (global-set-key [f9] 'insert-gpl-header)
 (global-set-key [f10] 'man-local)
+(global-set-key [f12] 'recentf-open-files)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
