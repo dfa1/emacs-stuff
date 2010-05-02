@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 21:17:24 dfa>
+;; Time-stamp: <2010-05-02 21:22:03 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -163,33 +163,6 @@
 
 (setq font-lock-support-mode 'jit-lock-mode
       fast-lock-cache-directories '("~/.emacs-flc"))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Outline
-
-(define-prefix-command 'cm-map nil "Outline-")
-
-(define-key cm-map "q" 'hide-sublevels)
-(define-key cm-map "t" 'hide-body)
-(define-key cm-map "o" 'hide-other)
-(define-key cm-map "c" 'hide-entry)
-(define-key cm-map "l" 'hide-leaves)
-(define-key cm-map "d" 'hide-subtree)
-
-(define-key cm-map "a" 'show-all)
-(define-key cm-map "e" 'show-entry)
-(define-key cm-map "i" 'show-children)
-(define-key cm-map "k" 'show-branches)
-(define-key cm-map "s" 'show-subtree)
-
-(define-key cm-map "u" 'outline-up-heading)
-(define-key cm-map "n" 'outline-next-visible-heading)
-(define-key cm-map "p" 'outline-previous-visible-heading)
-(define-key cm-map "f" 'outline-forward-same-level)
-(define-key cm-map "b" 'outline-backward-same-level)
-
-(global-set-key "\C-o" cm-map)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
