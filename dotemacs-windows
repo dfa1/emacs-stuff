@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-01 21:50:17 dfa>
+;; Time-stamp: <2010-05-02 14:38:52 dfa>
 
 ;; forked from dotemacs (for Gentoo Linux), removed some stuff such as:
 ;;   - C/Java mode
@@ -579,7 +579,8 @@ USA.
 (add-hook 'after-save-hook 'compile-dotemacs)
 
 ;; use emacs-lisp-mode for dotemacs
-(add-to-list 'auto-mode-alist '("dotemacs" "dotemacs-windows" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("dotemacs" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("dotemacs-windows" . emacs-lisp-mode))
 
 ;; keybindings
 (add-hook 'emacs-lisp-mode-hook
