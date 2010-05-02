@@ -2,7 +2,7 @@
 ;; My .emacs for windows
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 14:44:22 dfa>
+;; Time-stamp: <2010-05-02 14:45:38 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -574,14 +574,13 @@ USA.
   "Compile the dotemacs file."
   (interactive)
   (if (string= (buffer-file-name) 
-	       (expand-file-name (concat default-directory "dotemacs")))
+	       (expand-file-name (concat default-directory "dotemacs-windows")))
       (byte-compile-file (buffer-file-name))))
 
 ;; autocompile dotemacs at save
 (add-hook 'after-save-hook 'compile-dotemacs)
 
-;; use emacs-lisp-mode for dotemacs
-(add-to-list 'auto-mode-alist '("dotemacs" . emacs-lisp-mode))
+;; use emacs-lisp-mode for "dotemacs-windows"
 (add-to-list 'auto-mode-alist '("dotemacs-windows" . emacs-lisp-mode))
 
 ;; keybindings
