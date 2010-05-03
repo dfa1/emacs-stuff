@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-02 21:22:03 dfa>
+;; Time-stamp: <2010-05-03 14:43:01 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -17,7 +17,7 @@
 ;;   - F4 open/returns to ERC
 ;;   - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
 ;;   - call (use 'clojure.contrib.repl-utils) with repl-hook
-
+;;   - refactor all global key bindings at the end of this file
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
@@ -252,11 +252,13 @@
 
 (global-set-key "\C-xq" 'kill-other-buffers)
 
+;; XXX: not mapped, using C-x right o C-x left
 (defun switch-to-previous-buffer ()
   "Switch to previous buffer"
   (interactive)
   (switch-to-buffer (other-buffer)))
-(global-set-key "\C-b" 'switch-to-previous-buffer)
+
+(global-set-key "\C-b" 'ibuffer)
 
 (defun back-to-indentation-or-beginning ()
   "switches the point to before the first non-space
