@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-03 14:43:01 dfa>
+;; Time-stamp: <2010-05-04 00:24:33 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -547,20 +547,16 @@ USA.
 
 ;; a modified version from http://www.emacswiki.org/emacs/TabCompletion
 (defun smart-tab (completion-hook)
-  "This smart tab is minibuffer compliant: it acts as usual in
-   the minibuffer. Else, if mark is active, indents region. Else if
-   point is at the end of a symbol, expands it using the `completion-hook'. 
-   Else indents the current line."
+  "If mark is active, indents region. Else if point is at the end
+   of a symbol, expands it using the `completion-hook'. Else
+   indents the current line."
   (interactive)
-  (if (string-match "Minibuf" (buffer-name))
-      (unless (minibuffer-complete)
-	(dabbrev-expand nil))
-    (if mark-active
-	(indent-region (region-beginning)
-		       (region-end))
+  (if mark-active
+      (indent-region (region-beginning)
+		     (region-end))
       (if (looking-at "\\>")
 	  (funcall completion-hook)
-	(indent-for-tab-command)))))
+	(indent-for-tab-command))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
