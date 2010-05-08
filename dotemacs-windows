@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-04 00:24:33 dfa>
+;; Time-stamp: <2010-05-08 13:52:07 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -754,8 +754,7 @@ USA.
   (setq special-display-buffer-names
 	(nconc '("*Backtrace*"
 		 "*vc-change-log*"
-		 "*VC-log*"
-		 "*hg push*") ;; must match mercurial-push-cwd
+		 "*VC-log*") 
 	       special-display-buffer-names))
 
   ;; display those special buffer frames without a tool bar
@@ -784,6 +783,9 @@ USA.
   (setq scroll-step 1)
   (setq scroll-conservatively 1))
 
+;; open recent files at init
+(recentf-open-files)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
@@ -793,13 +795,13 @@ USA.
 ;;; interfacing with ELPA, the package archive.
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
+;; (when
+;;     (load
+;;      (expand-file-name "~/.emacs.d/elpa/package.el"))
+;;   (package-initialize))
 
 ;; must be loaded after ELPA
-(require 'slime)
+;; (require 'slime)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -813,6 +815,3 @@ USA.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-
-;; open recent files at init
-(recentf-open-files)
