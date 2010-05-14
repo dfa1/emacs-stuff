@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-03 14:43:01 dfa>
+;; Time-stamp: <2010-05-14 14:41:37 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -747,7 +747,14 @@ USA.
 	    (local-set-key "\C-ci" 'latex-i-skeleton)
 	    (local-set-key "\C-co" 'latex-o-skeleton)
 	    (local-set-key "\C-cu" 'latex-u-skeleton)
-	    (local-set-key "\C-ca" 'latex-a-skeleton)))
+	    (local-set-key "\C-ca" 'latex-a-skeleton)
+	    
+	    ;; autocompletion with tab-or-indent
+	    (defun complete-latex () 
+	      (interactive)
+	      (smart-tab 'TeX-complete-symbol))
+
+	    (local-set-key (kbd "<tab>") 'complete-latex)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
