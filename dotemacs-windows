@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-05-08 14:53:04 dfa>
+;; Time-stamp: <2010-06-04 00:24:06 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -551,6 +551,9 @@ USA.
 ;;  - TeX-complete-symbol
 ;;  - slime-complete-symbol 
 ;;  - lisp-complete-symbol
+;;
+;; NB: this is NOT smart-tab.el, this is just a useful hack
+;; (available at http://github.com/haxney/smart-tab/blob/master/smart-tab.el)
 
 (defun smart-tab (completion-hook)
   "If mark is active, indents region. Else if point is at the end
