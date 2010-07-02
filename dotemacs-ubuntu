@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-02 14:30:50 dfa>
+;; Time-stamp: <2010-07-02 14:47:37 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -149,7 +149,10 @@
 			  '(("\\(XXX\\|FIXME\\|TODO\\)" 
 			     1 font-lock-warning-face prepend))))
 
-;; other customizations
+;; font customizations
+(if (>= emacs-major-version 23) ;; in place of ~/.Xresources
+    (set-frame-font "Monospace-10"))
+
 (setq font-lock-maximum-decoration t
       font-lock-maximum-size nil)
 
