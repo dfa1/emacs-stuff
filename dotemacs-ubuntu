@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-02 14:23:18 dfa>
+;; Time-stamp: <2010-07-02 14:30:50 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -208,10 +208,7 @@
 	 "#!/bin/bash\n")
 	((cperl-mode . "Perl Program")
 	 nil
-	 "#!/usr/bin/perl\n\nuse strict;\nuse warnings;\n\n")
-	((muse-mode . "Muse page")
-	 nil
-	 "#title ")))
+	 "#!/usr/bin/perl\n\nuse strict;\nuse warnings;\n\n")))
 
 (auto-insert-mode 1)
 
