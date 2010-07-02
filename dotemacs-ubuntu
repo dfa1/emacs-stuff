@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-02 14:21:44 dfa>
+;; Time-stamp: <2010-07-02 14:23:18 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -569,14 +569,14 @@ USA.
   "Compile the dotemacs file."
   (interactive)
   (if (string= (buffer-file-name) 
-	       (expand-file-name (concat default-directory "dotemacs-windows")))
+	       (expand-file-name (concat default-directory "dotemacs-ubuntu")))
       (byte-compile-file (buffer-file-name))))
 
 ;; autocompile dotemacs at save
 (add-hook 'after-save-hook 'compile-dotemacs)
 
-;; use emacs-lisp-mode for "dotemacs-windows"
-(add-to-list 'auto-mode-alist '("dotemacs-windows" . emacs-lisp-mode))
+;; use emacs-lisp-mode for "dotemacs-ubuntu"
+(add-to-list 'auto-mode-alist '("dotemacs-ubuntu" . emacs-lisp-mode))
 
 ;; keybindings
 (add-hook 'emacs-lisp-mode-hook
