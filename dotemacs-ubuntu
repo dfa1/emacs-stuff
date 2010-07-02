@@ -1,17 +1,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My .emacs for Microsoft Windows 7
+;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
 ;; Time-stamp: <2010-06-04 00:24:06 dfa>
 ;;
-;; forked from "dotemacs" (no longer maintained):
-;;   - removed C/Java mode customizations
-;;   - ditto for perl 
-;;   - ditto for m4/autoconf 
-;;   - ditto for muse 
-;;   - ditto for other Gentoo Linux stuff
-;;   - added clojure/slime
-;;   - improved clone lines 
+;; forked from "dotemacs-windows" 
+;;   - removed windows specific stuff
+;;   - removed ELPA 
 ;;
 ;; TODO:
 ;;   - F4 open/returns to ERC
@@ -24,7 +19,7 @@
 ;; Variables
 
 ;; my home
-(setq default-directory "c:/Users/dfa/")
+(setq default-directory "/home/dfa/")
 
 ;; inhibit startup message
 (setq inhibit-startup-message t)
@@ -113,10 +108,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; FlySpell
-
-;; using GNU aspell...
-(setq ispell-program-name 
-      "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
 
 ;; ...and try to speedup it
 (setq ispell-extra-args 
@@ -802,32 +793,3 @@ USA.
 ;; open recent files at init
 (recentf-open-files)
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; packages
-
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-;; (when
-;;     (load
-;;      (expand-file-name "~/.emacs.d/elpa/package.el"))
-;;   (package-initialize))
-
-;; must be loaded after ELPA
-;; (require 'slime)
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((TeX-master . tesi)))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
