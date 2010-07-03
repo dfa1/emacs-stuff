@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-02 14:47:37 dfa>
+;; Time-stamp: <2010-07-02 22:52:41 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -10,7 +10,6 @@
 ;;
 ;; TODO:
 ;;   - F4 open/returns to ERC
-;;   - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
 ;;   - call (use 'clojure.contrib.repl-utils) with repl-hook
 ;;   - refactor all global key bindings at the end of this file
 
@@ -630,6 +629,19 @@ USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; clojure-mode 
+;;
+;; http://wiki.unto.net/setting-up-clojure-and-slime
+;; http://riddell.us/ClojureWithEmacsSlimeSwankOnUbuntu.html
+
+(add-to-list 'load-path "~/apps/clojure-mode")
+(add-to-list 'load-path "~/apps/swank-clojure")
+(add-to-list 'load-path "~/apps/slime")
+
+(setq swank-clojure-jar-path "~/apps/clojure/1.1/clojure.jar")
+
+(require 'clojure-mode)
+(require 'swank-clojure)
+(require 'slime)
 
 (add-hook 'clojure-mode-hook
 	  (lambda ()
@@ -639,6 +651,10 @@ USA.
 	      (smart-tab 'slime-complete-symbol))
 
 	    (local-set-key (kbd "<tab>") 'complete-clojure)))
+
+
+(eval-after-load "slime" (slime-setup '(slime-repl)))
+(slime-setup)
 
 ; slime-repl customisation
 (add-hook 'slime-repl-hook
