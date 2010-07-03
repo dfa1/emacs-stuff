@@ -2,14 +2,13 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-03 11:04:10 dfa>
+;; Time-stamp: <2010-07-03 12:08:33 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
 ;;   - removed ELPA 
-;;
-;; TODO:
-;;   - refactor all global key bindings at the end of this file
+;;   - removed ERC
+;;   - global key bindings at EOF
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -173,8 +172,6 @@
   (switch-to-buffer "*hg push*")
   (vc-do-command "*hg push*" `async' "hg" nil "push"))
 
-(global-set-key "\C-xvp" 'mercurial-push-cwd)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; other minor modes
@@ -218,37 +215,10 @@
 ;; disable over-write mode
 (put 'overwrite-mode 'disabled t)
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My Keybindings
-
-;; *mental sanity mode*: use C-f for search, and other "Windows" keystrokes..
-(global-set-key "\C-s" 'save-buffer)
-(global-set-key "\C-f" 'isearch-forward-regexp)
-(global-unset-key "\C-x\C-l")
-(global-set-key "\C-x\C-l" 'recenter)
-(global-unset-key "\C-l")
-(global-set-key "\C-l" 'goto-line)
-
 ;; ibuffer
 (require 'ibuffer)
-(global-set-key "\C-x\C-b" 'ibuffer)
 
-(defun kill-other-buffers ()
-  "Kill all other buffers."
-  (interactive)
-  (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
-
-(global-set-key "\C-xq" 'kill-other-buffers)
-
-;; XXX: not mapped, using C-x right o C-x left
-(defun switch-to-previous-buffer ()
-  "Switch to previous buffer"
-  (interactive)
-  (switch-to-buffer (other-buffer)))
-
-(global-set-key "\C-b" 'ibuffer)
-
+;; indent
 (defun back-to-indentation-or-beginning ()
   "switches the point to before the first non-space
     character, or if the point is already there it goes to the
@@ -257,8 +227,6 @@
   (if (= (point) (save-excursion (back-to-indentation) (point)))
       (beginning-of-line)
     (back-to-indentation)))
-
-(global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
 
 ;; clone line as on netbeans
 (defun clone-line()
@@ -279,34 +247,11 @@
     (yank)
     (goto-char start)))
 
-(global-set-key [C-S-down] 
-		'(lambda () 
-		   (interactive)
-		   (if (region-active-p)
-		       (clone-region)
-		     (clone-line))))
-
-(global-set-key [C-S-up] '(lambda () 
-		   (interactive)
-		   (if (region-active-p)
-		       (clone-region)
-		     (clone-line))))
-
 ;; other special commands
 (defun insert-shell-command-output (command)
   "Prompt for a command the insert it's output at point"
   (interactive "sInsert command output: ")
   (insert (shell-command-to-string command)))
-
-;; handy keystrokes
-(global-set-key "\M-`" 'quick-calc)
-(global-set-key "\M-1" 'woman)
-(global-set-key "\M-2" 'shell-command)
-(global-set-key "\M-@" 'insert-shell-command-output)
-(global-set-key "\M-3" 'indent-region)
-(global-set-key "\M-4" 'locate)
-(global-set-key "\M-5" 'highlight-regexp)
-(global-set-key "\M-6" 'unhighlight-regexp)
 
 ;; source:
 ;;   http://www.emacswiki.org/cgi-bin/wiki/PopupRuler
@@ -329,8 +274,6 @@
    (line-beginning-position)
    nil "[space] Clears ruler"))
 
-(global-set-key "\M-7" 'column-ruler)
-
 (defun increment-number-at-point ()
   "Increment the number at point"
   (interactive)
@@ -339,8 +282,6 @@
       (error "No number at point"))
   (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
 
-(global-set-key "\M-0" 'increment-number-at-point)
-
 (defun decrement-number-at-point ()
   "Decrement number at point"
   (interactive)
@@ -348,9 +289,6 @@
   (or (looking-at "[0123456789]+")
       (error "No number at point"))
   (replace-match (number-to-string (1- (string-to-number (match-string 0))))))
-
-(global-set-key "\M-9" 'decrement-number-at-point)
-
 
 ;; insert the date, the time, and the date and time at point. Insert
 ;; the date 31 days hence at point, eventually...
@@ -436,22 +374,6 @@ USA.
   (browse-url (cadr (assoc what man-local-alist))))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; mapping function keys
-
-(global-set-key [f1] 'info)
-(global-set-key [f2] 'eshell)
-(global-set-key [f3] 'force-swith-to-slime)
-(global-set-key [f4] 'erc-maybe)
-(global-set-key [f5] 'insert-date)
-(global-set-key [f6] 'insert-time)
-(global-set-key [f7] 'insert-time-and-date)
-(global-set-key [f8] 'insert-name-and-email)
-(global-set-key [f9] 'insert-gpl-header)
-(global-set-key [f10] 'man-local)
-(global-set-key [f12] 'recentf-open-files)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Handy macros
 
@@ -512,13 +434,6 @@ USA.
   "prevent string-match to receive a nil as string" ;; FIXME
   (if (not (eq string nil))
       (string-match regexp buffer-file-name)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; mode-compile
-
-(global-set-key "\C-c\C-c" 'mode-compile)
-(global-set-key "\C-c\C-k" 'mode-compile-kill)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -771,3 +686,59 @@ USA.
 (recentf-open-files)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; global key bindings
+
+;; *mental sanity mode*: use C-f for search, and other "Windows" keystrokes..
+(global-set-key "\C-s" 'save-buffer)
+(global-set-key "\C-f" 'isearch-forward-regexp)
+(global-unset-key "\C-x\C-l")
+(global-set-key "\C-x\C-l" 'recenter)
+(global-unset-key "\C-l")
+(global-set-key "\C-l" 'goto-line)
+(global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
+
+(global-set-key "\C-b" 'ibuffer)
+
+(global-set-key "\C-xvp" 'mercurial-push-cwd)
+
+(global-set-key "\C-c\C-c" 'mode-compile)
+(global-set-key "\C-c\C-k" 'mode-compile-kill)
+
+(global-set-key "\M-`" 'quick-calc)
+(global-set-key "\M-1" 'woman)
+(global-set-key "\M-2" 'shell-command)
+(global-set-key "\M-@" 'insert-shell-command-output)
+(global-set-key "\M-3" 'indent-region)
+(global-set-key "\M-4" 'locate)
+(global-set-key "\M-5" 'highlight-regexp)
+(global-set-key "\M-6" 'unhighlight-regexp)
+(global-set-key "\M-7" 'column-ruler)
+(global-set-key "\M-9" 'decrement-number-at-point)
+(global-set-key "\M-0" 'increment-number-at-point)
+
+(global-set-key [f1] 'info)
+(global-set-key [f2] 'eshell)
+(global-set-key [f3] 'force-swith-to-slime)
+(global-set-key [f4] 'erc-maybe)
+(global-set-key [f5] 'insert-date)
+(global-set-key [f6] 'insert-time)
+(global-set-key [f7] 'insert-time-and-date)
+(global-set-key [f8] 'insert-name-and-email)
+(global-set-key [f9] 'insert-gpl-header)
+(global-set-key [f10] 'man-local)
+(global-set-key [f12] 'recentf-open-files)
+
+;; netbeans-like clone line/regione
+(global-set-key [C-S-down] 
+		'(lambda () 
+		   (interactive)
+		   (if (region-active-p)
+		       (clone-region)
+		     (clone-line))))
+
+(global-set-key [C-S-up] '(lambda () 
+		   (interactive)
+		   (if (region-active-p)
+		       (clone-region)
+		     (clone-line))))
