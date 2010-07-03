@@ -2,15 +2,13 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-03 10:40:01 dfa>
+;; Time-stamp: <2010-07-03 11:04:10 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
 ;;   - removed ELPA 
 ;;
 ;; TODO:
-;;   - F4 open/returns to ERC
-;;   - call (use 'clojure.contrib.repl-utils) with repl-hook
 ;;   - refactor all global key bindings at the end of this file
 
 
@@ -771,4 +769,5 @@ USA.
 
 ;; open recent files at init
 (recentf-open-files)
+
 
