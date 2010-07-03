@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-03 12:13:17 dfa>
+;; Time-stamp: <2010-07-03 12:34:00 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -243,6 +243,14 @@
     (kill-ring-save (region-beginning) (region-end))
     (yank)
     (goto-char start)))
+
+(defun clone-region-or-line()
+  "Clone the current region, or if none active, the current line."
+  (interactive)
+  (if (region-active-p)
+      (clone-region)
+    (clone-line)))
+
 
 ;; other special commands
 (defun insert-shell-command-output (command)
@@ -699,18 +707,9 @@ USA.
 (global-set-key [f12] 'recentf-open-files)
 
 ;; netbeans-like clone line/regione
-(global-set-key [C-S-down] 
-		'(lambda () 
-		   (interactive)
-		   (if (region-active-p)
-		       (clone-region)
-		     (clone-line))))
+(global-set-key [C-S-down] 'clone-region-or-line)
+(global-set-key [C-S-up] 'clone-region-or-line)
 
-(global-set-key [C-S-up] '(lambda () 
-		   (interactive)
-		   (if (region-active-p)
-		       (clone-region)
-		     (clone-line))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; unused functions 
