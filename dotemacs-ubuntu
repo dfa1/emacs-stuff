@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-03 12:08:33 dfa>
+;; Time-stamp: <2010-07-03 12:13:17 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -50,9 +50,6 @@
 ;; cursor follow compilation's output
 (setq compilation-scroll-output t)
 
-;; undo limit
-(setq undo-limit 40000)
-
 ;; make all "yes or no" prompts show "y or n" instead
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -78,12 +75,12 @@
 (setq european-calendar-style 't)
 
 ;; the bullet indicates the start of a new paragraph
-(setq paragraph-start "\\*\\|$\\|-"
-      paragraph-separate "$")
+;; (setq paragraph-start "\\*\\|$\\|-"
+;;       paragraph-separate "$")
 
 ;; sentences
-(setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
-      sentence-end-double-space nil)
+;; (setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
+;;       sentence-end-double-space nil)
 
 ;; completion ignores filenames ending in any string in this list
 (setq completion-ignored-extensions
@@ -416,25 +413,6 @@ USA.
 	(setq i (- i 96)))))
   (toggle-read-only 1))
 
-;; helpers (non interactive)
-(defmacro join (join-char &rest others)
-  "join as in perl"
-  `(mapconcat 'identity ',others ,join-char))
-
-(defun string-repeat (str times)
-  "As the x operator in perl"
-  (let ((res ""))
-    (let ((i 0))
-      (while (< i times)
-	(setq res (concat str res))
-	(setq i (+ i 1)))) 
-    res))
-
-(defun secure-string-match(regexp string)
-  "prevent string-match to receive a nil as string" ;; FIXME
-  (if (not (eq string nil))
-      (string-match regexp buffer-file-name)))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smart completion 
@@ -571,15 +549,6 @@ USA.
   (if (slime-connected-p)
     (slime-switch-to-output-buffer)
     (slime)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; html-mode
-
-;; (add-hook 'html-mode-hook
-;; 	  (lambda ()
-;; 	    ;; setting indent-line-function
-;; 	    (setq indent-line-function 'indent-relative)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -742,3 +711,25 @@ USA.
 		   (if (region-active-p)
 		       (clone-region)
 		     (clone-line))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; unused functions 
+
+(defmacro join (join-char &rest others)
+  "join as in perl"
+  `(mapconcat 'identity ',others ,join-char))
+
+(defun string-repeat (str times)
+  "As the x operator in perl"
+  (let ((res ""))
+    (let ((i 0))
+      (while (< i times)
+	(setq res (concat str res))
+	(setq i (+ i 1)))) 
+    res))
+
+(defun secure-string-match(regexp string)
+  "prevent string-match to receive a nil as string" ;; FIXME
+  (if (not (eq string nil))
+      (string-match regexp buffer-file-name)))
+
