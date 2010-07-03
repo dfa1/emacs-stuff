@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-02 22:52:41 dfa>
+;; Time-stamp: <2010-07-03 10:40:01 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -263,18 +263,8 @@
 (global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
 
 ;; clone line as on netbeans
-(defun clone-line-below()
-  "Copy the current line below."
-  (interactive)
-  (beginning-of-line)
-  (kill-line)
-  (yank)
-  (newline)
-  (yank)
-  (beginning-of-line))
-
-(defun clone-line-above()
-  "Copy the current line above."
+(defun clone-line()
+  "Copy the current line after itself."
   (interactive)
   (beginning-of-line)
   (kill-line)
@@ -296,13 +286,13 @@
 		   (interactive)
 		   (if (region-active-p)
 		       (clone-region)
-		     (clone-line-below))))
+		     (clone-line))))
 
 (global-set-key [C-S-up] '(lambda () 
 		   (interactive)
 		   (if (region-active-p)
 		       (clone-region)
-		     (clone-line-above))))
+		     (clone-line))))
 
 ;; other special commands
 (defun insert-shell-command-output (command)
