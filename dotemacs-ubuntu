@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-11 17:22:39 dfa>
+;; Time-stamp: <2010-07-11 17:31:39 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -704,7 +704,7 @@ USA.
 (global-set-key [f10] 'man-local)
 (global-set-key [f12] 'recentf-open-files)
 
-;; netbeans-like clone line/regione
+;; netbeans-like clone line/region
 (global-set-key [C-S-down] 'clone-region-or-line)
 (global-set-key [C-S-up] 'clone-region-or-line)
 
