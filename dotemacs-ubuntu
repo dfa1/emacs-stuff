@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-11 17:20:31 dfa>
+;; Time-stamp: <2010-07-11 17:22:39 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -584,7 +584,7 @@ USA.
 
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
-	    ;; italian accents; I don't like the italian keyboard's layout
+	    ;; italian accents
 	    (define-skeleton latex-e-skeleton
 	      "Insert \`{e} " nil
 	      > "\\`{e}" _)
