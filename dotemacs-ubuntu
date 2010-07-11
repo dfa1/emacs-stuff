@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-11 17:18:09 dfa>
+;; Time-stamp: <2010-07-11 17:20:31 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -632,16 +632,17 @@ USA.
 
   ;; display those special buffer frames without a tool bar
   (setq special-display-frame-alist nil)
+
+  ;; customizing frame look
   (add-to-list 'special-display-frame-alist '(tool-bar-lines . 0))
   (add-to-list 'special-display-frame-alist '(menu-bar-lines . 0))
   (add-to-list 'special-display-frame-alist '(height . 10))
   (add-to-list 'special-display-frame-alist '(width . 80))
   (add-to-list 'special-display-frame-alist '(unsplittable . t))
-
-  ;; customizing frame look
   (add-to-list 'default-frame-alist '(cursor-color . "white"))
   (add-to-list 'default-frame-alist '(foreground-color . "white"))
   (add-to-list 'default-frame-alist '(background-color . "MidnightBlue"))
+  (add-to-list 'default-frame-alist '(font . "Monospace-10"))
 
   ;; disabling the toolbar and the scrollbar
   (tool-bar-mode -1)
