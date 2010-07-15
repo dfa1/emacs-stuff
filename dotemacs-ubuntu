@@ -1,8 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-16 01:02:46 dfa>
+;; Time-stamp: <2010-07-16 01:11:56 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -14,9 +15,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
-
-;; my home
-(setq default-directory "/home/dfa/")
 
 ;; inhibit startup message
 (setq inhibit-startup-message t)
@@ -136,6 +134,7 @@
 		latex-mode
 		LaTeX-mode
 		html-mode
+		c-mode
 		css-mode
 		clojure-mode
 		emacs-lisp-mode))
@@ -916,9 +915,6 @@ USA.
   (setq scroll-step 1)
   (setq scroll-conservatively 1))
 
-;; open recent files at init
-(recentf-open-files)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; global key bindings
@@ -968,3 +964,8 @@ USA.
 (global-set-key [C-S-up] 'clone-region-or-line)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; recentf
+
+;; open recent files at init
+(recentf-open-files)
