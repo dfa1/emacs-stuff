@@ -2,7 +2,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-15 08:54:46 dfa>
+;; Time-stamp: <2010-07-16 01:02:46 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -870,7 +870,15 @@ USA.
 	    (local-set-key (kbd "<tab>") 'complete-latex)))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  shell
+
+(defun bash ()
+  (interactive)
+  (ansi-term "bash"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  X window stuff
 
 (when window-system
@@ -944,7 +952,7 @@ USA.
 (global-set-key "\M-0" 'increment-number-at-point)
 
 (global-set-key [f1] 'info)
-(global-set-key [f2] 'eshell)
+(global-set-key [f2] 'bash)
 (global-set-key [f3] 'force-swith-to-slime)
 (global-set-key [f4] 'erc-maybe)
 (global-set-key [f5] 'insert-date)
