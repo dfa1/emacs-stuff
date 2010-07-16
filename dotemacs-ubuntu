@@ -3,7 +3,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-16 09:37:23 dfa>
+;; Time-stamp: <2010-07-16 10:37:58 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -885,27 +885,33 @@ USA.
 ;; erc-mode
    
 (require 'erc-join)
-(erc-autojoin-mode 1)
-(setq erc-autojoin-channels-alist
-          '(("freenode.net" "#clojure" "#emacs")))
 
 (add-hook 'erc-mode-hook
           '(lambda ()
 	     (setq erc-user-full-name "Davide Angelocola")
 	     (setq erc-email-userid "davide.angelocola@gmail.com")
+	     (setq erc-interpret-mirc-color t)
+	     (setq erc-kill-buffer-on-part t)
+	     (setq erc-kill-queries-on-quit t)
+	     (setq erc-kill-server-buffer-on-quit t)
 	     (erc-button-mode -1) 
              (require 'erc-pcomplete)
              (pcomplete-erc-setup)
              (erc-completion-mode 1)))
 
-(defun erc-maybe ()
+(defun erc()
   "Connect to IRC."
   (interactive)
-  (when (y-or-n-p "connect to IRC? ")
-    (erc :server "irc.freenode.net" 
-	 :port 6667
-	 :nick "dfa2" 
-	 :full-name "Davide Angelocola")))
+  (let ((channel (car (erc-channel-list nil))))
+    (if (not channel)
+	(when (y-or-n-p "connect to IRC? ")
+	  (erc))
+      (switch-to-buffer channel))))
+
+(erc-autojoin-mode 1)
+
+(setq erc-autojoin-channels-alist
+          '(("freenode.net" "#clojure" "#emacs")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -981,7 +987,7 @@ USA.
 (global-set-key [f1] 'man-local)
 (global-set-key [f2] 'bash)
 (global-set-key [f3] 'force-switch-to-slime)
-(global-set-key [f4] 'erc-maybe)
+(global-set-key [f4] 'erc)
 (global-set-key [f5] 'insert-date)
 (global-set-key [f6] 'insert-time)
 (global-set-key [f7] 'insert-time-and-date)
