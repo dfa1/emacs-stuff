@@ -3,7 +3,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-16 01:28:01 dfa>
+;; Time-stamp: <2010-07-16 09:01:43 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -550,7 +550,7 @@ USA.
    (slime-repl-eval-string "(use 'clojure.contrib.repl-utils)")))
 
 ;; slime (mapped to F3)
-(defun force-swith-to-slime() 
+(defun force-switch-to-slime() 
   (interactive)
   (if (slime-connected-p)
     (slime-switch-to-output-buffer)
@@ -879,6 +879,34 @@ USA.
   (ansi-term "bash"))
 
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; erc-mode
+   
+(require 'erc-join)
+(erc-autojoin-mode 1)
+(setq erc-autojoin-channels-alist
+          '(("freenode.net" "#clojure" "#emacs")))
+
+(add-hook 'erc-mode-hook
+          '(lambda ()
+	     (setq erc-user-full-name "Davide Angelocola")
+	     (setq erc-email-userid "davide.angelocola@gmail.com")
+	     (erc-button-mode -1) 
+             (require 'erc-pcomplete)
+             (pcomplete-erc-setup)
+             (erc-completion-mode 1)))
+
+(defun erc-maybe ()
+  "Connect to IRC."
+  (interactive)
+  (when (y-or-n-p "connect to IRC? ")
+    (erc :server "irc.freenode.net" 
+	 :port 6667
+	 :nick "dfa2" 
+	 :full-name "Davide Angelocola")))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  X window stuff
 
@@ -949,16 +977,15 @@ USA.
 (global-set-key "\M-9" 'decrement-number-at-point)
 (global-set-key "\M-0" 'increment-number-at-point)
 
-(global-set-key [f1] 'info)
+(global-set-key [f1] 'man-local)
 (global-set-key [f2] 'bash)
-(global-set-key [f3] 'force-swith-to-slime)
+(global-set-key [f3] 'force-switch-to-slime)
 (global-set-key [f4] 'erc-maybe)
 (global-set-key [f5] 'insert-date)
 (global-set-key [f6] 'insert-time)
 (global-set-key [f7] 'insert-time-and-date)
 (global-set-key [f8] 'insert-name-and-email)
 (global-set-key [f9] 'insert-gpl-header)
-(global-set-key [f10] 'man-local)
 (global-set-key [f12] 'recentf-open-files)
 
 ;; netbeans-like clone line/region
