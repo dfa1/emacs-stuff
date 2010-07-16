@@ -3,7 +3,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-16 09:01:43 dfa>
+;; Time-stamp: <2010-07-16 09:37:23 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -876,8 +876,9 @@ USA.
 
 (defun bash ()
   (interactive)
-  (ansi-term "bash"))
-
+  (when (not (get-buffer "*ansi-term*"))
+    (ansi-term "bash"))
+  (switch-to-buffer "*ansi-term*"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
