@@ -3,7 +3,7 @@
 ;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-07-16 10:43:32 dfa>
+;; Time-stamp: <2010-07-16 10:45:13 dfa>
 ;;
 ;; forked from "dotemacs-windows" 
 ;;   - removed windows specific stuff
@@ -908,10 +908,11 @@ USA.
 	  (erc))
       (switch-to-buffer channel))))
 
+;; autojoin
 (erc-autojoin-mode 1)
-
 (setq erc-autojoin-channels-alist
-          '(("freenode.net" "#clojure" "#emacs")))
+          '(("freenode.net" "#clojure" "#emacs")
+	    ("signalos.org" "#ahccc")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
