@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-12 22:49:00 dfa>
+;; Time-stamp: <2010-12-12 23:25:01 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -600,9 +600,6 @@ USA.
 ;; templates
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
-	    ;; activating paredit-mode (installed via elpa)
-	    ;;(paredit-mode 1)
-
 	    ;; add-hook
 	    (define-skeleton elisp-skeleton-add-hook
 	      "Insert an add-hook block" nil
@@ -666,7 +663,7 @@ USA.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; erc-mode
    
-(require 'erc-join)
+(require 'erc-join) 
 (erc-autojoin-mode 1)
 (setq erc-autojoin-channels-alist
           '(("freenode.net" "#clojure" "#emacs")))
