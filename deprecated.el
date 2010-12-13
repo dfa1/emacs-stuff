@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Unused functions. 
+;; Deprecated/unused/old stuff. 
 ;;
 ;; Author     : Davide Angelocola <davide.angelocola@gmail.com>
 ;; Time-stamp : <2010-12-13 21:41:09 dfa>
