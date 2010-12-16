@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-12 23:25:01 dfa>
+;; Time-stamp: <2010-12-16 23:32:26 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -586,6 +586,11 @@ USA.
 
 ;; use emacs-lisp-mode for "dotemacs-windows"
 (add-to-list 'auto-mode-alist '("dotemacs-windows" . emacs-lisp-mode))
+
+;; enable eldoc
+(add-hook 'emacs-lisp-mode-hook
+	  (lambda ()
+	    (eldoc-mode 1)))
 
 ;; keybindings
 (add-hook 'emacs-lisp-mode-hook
