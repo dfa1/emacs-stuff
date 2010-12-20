@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-16 23:32:26 dfa>
+;; Time-stamp: <2010-12-20 01:22:31 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -193,6 +193,7 @@
 
 ;; cua mode
 (cua-mode 1)
+(setq cua-keep-region-after-copy t)
 
 ;; enable column number on all major modes
 (column-number-mode 1)
@@ -229,18 +230,6 @@
 
 ;; disable over-write mode
 (put 'overwrite-mode 'disabled t)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My Keybindings
-
-;; *mental sanity mode*: use C-f for search, and other "Windows" keystrokes..
-(global-set-key "\C-s" 'save-buffer)
-(global-set-key "\C-f" 'isearch-forward-regexp)
-(global-unset-key "\C-x\C-l")
-(global-set-key "\C-x\C-l" 'recenter)
-(global-unset-key "\C-l")
-(global-set-key "\C-l" 'goto-line)
 
 ;; ibuffer
 (require 'ibuffer)
@@ -818,3 +807,22 @@ USA.
 ;;      (expand-file-name "~/.emacs.d/elpa/package.el"))
 ;;   (package-initialize))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; My Keybindings
+
+;; additional "navite windows" behaviour 
+(global-set-key [C-tab] 'next-buffer)
+(global-set-key [C-S-tab] 'previous-buffer)
+
+(global-set-key [M-f4] 'save-buffers-kill-emacs)
+(global-set-key "\C-f" 'isearch-forward)
+(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
+(global-set-key "\C-o" 'find-file)
+(global-set-key "\C-s" 'save-buffer)
+(global-set-key "\C-w" 'kill-this-buffer)
+
+(global-unset-key "\C-x\C-l")
+(global-set-key "\C-x\C-l" 'recenter)
+(global-unset-key "\C-l")
+(global-set-key "\C-l" 'goto-line)
