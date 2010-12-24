@@ -2,33 +2,32 @@ Splitted configuration
 ======================
 
 Since my .emacs is quite big (about 1k lines), and since I use GNU
-emacs both windows and linux distro, the need of better separation 
-of concerns in my configuration. 
+Emacs both Windows and GNU Linux distros, the need of better separation 
+of concerns arose. 
 
 My new layout is:
 
 basic.el       - basic editing commands
+editing.el     - custom editing functions
 flyspell.el    - flyspell stuff
 smart-tab.el   - my smart-tab
-elisp.el       - elisp
-clojure.el     - clojure mode as well as slime 
-c.el           - C mode
+elisp.el       - emacs lisp mode
+clojure.el     - clojure mode + slime
+c.el           
 perl.el        
 python.el
 html.el
-latex.el
-hg.el     - mercurial stuff
-erc.el    - ERC configuration
-gui.el    - windows stuff
-keymap.el - global keybindings
+latex.el       - LaTeX stuff
+hg.el          - mercurial stuff
+erc.el         - ERC configuration
+gui.el         - windows stuff
+keymap.el      - global keybindings
 
-before.el      - includes all the os indipendent stuff
-windows.el     - windows specific customizations (includes common.el)
-ubuntu.el      - ubuntu specific customizations  (include commo
-after.el       - called after all stuff is loaded (for recentf)
+windows.el     - windows specific customizations 
+ubuntu.el      - ubuntu specific customizations  
 
-.emacs         - the final .emacs, it loads base.el, then windows.el
-		 or ubuntu.el, finally it loads after.el
+dotemacs       - the final dotemacs
+
 
 
 desiderata
@@ -39,9 +38,14 @@ desiderata
 - call (use 'clojure.contrib.repl-utils) with repl-hook
 - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
 - clojure mode on windows depends on clojure box
-- compile-mode is broken
-- remove worthless functions
 - secure-string-match first arg cannot be nil
 - skeleton-pair or my inser-pair
-- use C-space to complete symbol (as in netbeans)
 - use windows-type to load different os specific configurations
+
+
+done
+====
+
+- use C-space to complete symbol (as in netbeans)
+- remove worthless functions
+- removed compile-mode 

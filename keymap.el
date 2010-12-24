@@ -46,4 +46,24 @@
 
 ;; my commands
 (global-set-key "\M-7" 'column-ruler)
+(global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
 
+(global-set-key "\M-9" 'decrement-number-at-point)
+(global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
+(global-set-key "\M-7" 'column-ruler)
+(global-set-key "\M-0" 'increment-number-at-point)
+(global-set-key "\M-9" 'decrement-number-at-point)
+
+;; TODO: create a function
+(global-set-key [C-S-down]
+		'(lambda () 
+		   (interactive)
+		   (if (region-active-p)
+		       (clone-region)
+		     (clone-line-below))))
+;; TODO: create a function
+(global-set-key [C-S-up] '(lambda () 
+		   (interactive)
+		   (if (region-active-p)
+		       (clone-region)
+		     (clone-line-above))))
