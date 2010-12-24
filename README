@@ -1,0 +1,47 @@
+Splitted configuration
+======================
+
+Since my .emacs is quite big (about 1k lines), and since I use GNU
+emacs both windows and linux distro, the need of better separation 
+of concerns in my configuration. 
+
+My new layout is:
+
+basic.el       - basic editing commands
+flyspell.el    - flyspell stuff
+smart-tab.el   - my smart-tab
+elisp.el       - elisp
+clojure.el     - clojure mode as well as slime 
+c.el           - C mode
+perl.el        
+python.el
+html.el
+latex.el
+hg.el     - mercurial stuff
+erc.el    - ERC configuration
+gui.el    - windows stuff
+keymap.el - global keybindings
+
+before.el      - includes all the os indipendent stuff
+windows.el     - windows specific customizations (includes common.el)
+ubuntu.el      - ubuntu specific customizations  (include commo
+after.el       - called after all stuff is loaded (for recentf)
+
+.emacs         - the final .emacs, it loads base.el, then windows.el
+		 or ubuntu.el, finally it loads after.el
+
+
+desiderata
+==========
+
+- C-M-q should be mapped to M-S-f (as in netbeans)
+- F4 open/returns to ERC
+- call (use 'clojure.contrib.repl-utils) with repl-hook
+- clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
+- clojure mode on windows depends on clojure box
+- compile-mode is broken
+- remove worthless functions
+- secure-string-match first arg cannot be nil
+- skeleton-pair or my inser-pair
+- use C-space to complete symbol (as in netbeans)
+- use windows-type to load different os specific configurations

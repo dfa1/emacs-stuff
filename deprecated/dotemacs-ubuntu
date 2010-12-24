@@ -1,29 +1,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My .emacs for Microsoft Windows 7
+;;
+;; My .emacs for Ubuntu 10.4
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-24 09:58:25 dfa>
+;; Time-stamp: <2010-12-24 10:57:41 dfa>
 ;;
-;; forked from "dotemacs" (no longer maintained):
-;;   - removed C/Java mode customizations
-;;   - ditto for perl 
-;;   - ditto for m4/autoconf 
-;;   - ditto for muse 
-;;   - ditto for other Gentoo Linux stuff
-;;   - added clojure/slime
-;;   - improved clone lines 
-;;
-;; TODO:
-;;   - F4 open/returns to ERC
-;;   - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
-;;   - call (use 'clojure.contrib.repl-utils) with repl-hook
+;; forked from "dotemacs-windows" 
+;;   - removed windows specific stuff
+;;   - removed ELPA 
+;;   - removed ERC
+;;   - global key bindings at end of file
+;;   - re-added C stuff
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
-
-;; my home
-(setq default-directory "c:/Users/dfa/")
 
 ;; inhibit startup message
 (setq inhibit-startup-message t)
@@ -58,9 +49,6 @@
 ;; cursor follow compilation's output
 (setq compilation-scroll-output t)
 
-;; undo limit
-(setq undo-limit 40000)
-
 ;; make all "yes or no" prompts show "y or n" instead
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -86,12 +74,12 @@
 (setq european-calendar-style 't)
 
 ;; the bullet indicates the start of a new paragraph
-(setq paragraph-start "\\*\\|$\\|-"
-      paragraph-separate "$")
+;; (setq paragraph-start "\\*\\|$\\|-"
+;;       paragraph-separate "$")
 
 ;; sentences
-(setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
-      sentence-end-double-space nil)
+;; (setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
+;;       sentence-end-double-space nil)
 
 ;; completion ignores filenames ending in any string in this list
 (setq completion-ignored-extensions
@@ -112,10 +100,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; FlySpell
-
-;; using GNU aspell...
-(setq ispell-program-name 
-      "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
 
 ;; ...and try to speedup it
 (setq ispell-extra-args 
@@ -150,6 +134,7 @@
 		latex-mode
 		LaTeX-mode
 		html-mode
+		c-mode
 		css-mode
 		clojure-mode
 		emacs-lisp-mode))
@@ -157,6 +142,7 @@
 			  '(("\\(XXX\\|FIXME\\|TODO\\)" 
 			     1 font-lock-warning-face prepend))))
 
+;; font customizations
 (setq font-lock-maximum-decoration t
       font-lock-maximum-size nil)
 
@@ -164,20 +150,21 @@
       fast-lock-cache-directories '("~/.emacs-flc"))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; VC 
+
+;; prompt for initial comment when a file is registered
+(setq vc-initial-comment t)
 
 ;; automatically follow symlinks
 (setq vc-follow-symlinks t)
 
 ;; mercurial push 
-(defun mercurial-push-cwd () 		; TODO: write a generic function
+(defun mercurial-push-cwd () 
   (interactive)
   (generate-new-buffer "*hg push*")
   (switch-to-buffer "*hg push*")
   (vc-do-command "*hg push*" `async' "hg" nil "push"))
-
-(global-set-key "\C-xvp" 'mercurial-push-cwd)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -206,16 +193,13 @@
 (require 'autoinsert)
 
 (setq auto-insert-query nil)
-(setq auto-insert-alist ;; TODO: move in specific files
+(setq auto-insert-alist
       '(((shell-script-mode . "Shell Program")
 	 nil
 	 "#!/bin/bash\n")
 	((cperl-mode . "Perl Program")
 	 nil
-	 "#!/usr/bin/perl\n\nuse strict;\nuse warnings;\n\n")
-	((muse-mode . "Muse page")
-	 nil
-	 "#title ")))
+	 "#!/usr/bin/perl\n\nuse strict;\nuse warnings;\n\n")))
 
 (auto-insert-mode 1)
 
@@ -228,11 +212,7 @@
 ;; ibuffer
 (require 'ibuffer)
 
-(defun kill-other-buffers ()
-  "Kill all other buffers."
-  (interactive)
-  (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
-
+;; indent
 (defun back-to-indentation-or-beginning ()
   "switches the point to before the first non-space
     character, or if the point is already there it goes to the
@@ -242,21 +222,9 @@
       (beginning-of-line)
     (back-to-indentation)))
 
-(global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
-
 ;; clone line as on netbeans
-(defun clone-line-below()
-  "Copy the current line below."
-  (interactive)
-  (beginning-of-line)
-  (kill-line)
-  (yank)
-  (newline)
-  (yank)
-  (beginning-of-line))
-
-(defun clone-line-above()
-  "Copy the current line above."
+(defun clone-line()
+  "Copy the current line after itself."
   (interactive)
   (beginning-of-line)
   (kill-line)
@@ -273,25 +241,19 @@
     (yank)
     (goto-char start)))
 
-(global-set-key [C-S-down]
-		'(lambda () 
-		   (interactive)
-		   (if (region-active-p)
-		       (clone-region)
-		     (clone-line-below))))
+(defun clone-region-or-line()
+  "Clone the current region, or if none active, the current line."
+  (interactive)
+  (if (region-active-p)
+      (clone-region)
+    (clone-line)))
 
-(global-set-key [C-S-up] '(lambda () 
-		   (interactive)
-		   (if (region-active-p)
-		       (clone-region)
-		     (clone-line-above))))
 
 ;; other special commands
 (defun insert-shell-command-output (command)
   "Prompt for a command the insert it's output at point"
   (interactive "sInsert command output: ")
   (insert (shell-command-to-string command)))
-
 
 ;; source:
 ;;   http://www.emacswiki.org/cgi-bin/wiki/PopupRuler
@@ -314,8 +276,6 @@
    (line-beginning-position)
    nil "[space] Clears ruler"))
 
-(global-set-key "\M-7" 'column-ruler)
-
 (defun increment-number-at-point ()
   "Increment the number at point"
   (interactive)
@@ -324,8 +284,6 @@
       (error "No number at point"))
   (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
 
-(global-set-key "\M-0" 'increment-number-at-point)
-
 (defun decrement-number-at-point ()
   "Decrement number at point"
   (interactive)
@@ -333,9 +291,6 @@
   (or (looking-at "[0123456789]+")
       (error "No number at point"))
   (replace-match (number-to-string (1- (string-to-number (match-string 0))))))
-
-(global-set-key "\M-9" 'decrement-number-at-point)
-
 
 ;; insert the date, the time, and the date and time at point. Insert
 ;; the date 31 days hence at point, eventually...
@@ -396,10 +351,12 @@ USA.
     (comment-region mark (+ mark (length gpl-header)))))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ManHtml
+;;
 ;; source:
 ;;   http://www.emacswiki.org/cgi-bin/wiki/ManHtml
+
 (setq man-local-alist
       '(
 	;; Clojure
@@ -421,23 +378,7 @@ USA.
   (browse-url (cadr (assoc what man-local-alist))))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; mapping function keys
-
-(global-set-key [f1] 'info)
-(global-set-key [f2] 'eshell)
-(global-set-key [f3] 'force-swith-to-slime)
-(global-set-key [f4] 'erc-maybe)
-(global-set-key [f5] 'insert-date)
-(global-set-key [f6] 'insert-time)
-(global-set-key [f7] 'insert-time-and-date)
-(global-set-key [f8] 'insert-name-and-email)
-(global-set-key [f9] 'insert-gpl-header)
-(global-set-key [f10] 'man-local)
-(global-set-key [f12] 'recentf-open-files)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Handy macros
 
 (setq local-vars "Local Variables:\n\nEnd:\n") 
@@ -479,34 +420,8 @@ USA.
 	(setq i (- i 96)))))
   (toggle-read-only 1))
 
-;; helpers (non interactive)
-(defmacro join (join-char &rest others)
-  "join as in perl"
-  `(mapconcat 'identity ',others ,join-char))
 
-(defun string-repeat (str times)
-  "As the x operator in perl"
-  (let ((res ""))
-    (let ((i 0))
-      (while (< i times)
-	(setq res (concat str res))
-	(setq i (+ i 1)))) 
-    res))
-
-(defun secure-string-match(regexp string)
-  "prevent string-match to receive a nil as string" ;; FIXME
-  (if (not (eq string nil))
-      (string-match regexp buffer-file-name)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; mode-compile
-
-(global-set-key "\C-c\C-c" 'mode-compile) ;; FIXME: broken
-(global-set-key "\C-c\C-k" 'mode-compile-kill)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smart completion 
 ;;
 ;; a modified version from http://www.emacswiki.org/emacs/TabCompletion
@@ -531,7 +446,7 @@ USA.
 	(indent-for-tab-command))))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs-lisp
 
 ;; bytecompile dotemacs 
@@ -541,19 +456,14 @@ USA.
   "Compile the dotemacs file."
   (interactive)
   (if (string= (buffer-file-name) 
-	       (expand-file-name (concat default-directory "dotemacs-windows")))
+	       (expand-file-name (concat default-directory "dotemacs-ubuntu")))
       (byte-compile-file (buffer-file-name))))
 
 ;; autocompile dotemacs at save
 (add-hook 'after-save-hook 'compile-dotemacs)
 
-;; use emacs-lisp-mode for "dotemacs-windows"
-(add-to-list 'auto-mode-alist '("dotemacs-windows" . emacs-lisp-mode))
-
-;; enable eldoc
-(add-hook 'emacs-lisp-mode-hook
-	  (lambda ()
-	    (eldoc-mode 1)))
+;; use emacs-lisp-mode for "dotemacs-ubuntu"
+(add-to-list 'auto-mode-alist '("dotemacs-ubuntu" . emacs-lisp-mode))
 
 ;; keybindings
 (add-hook 'emacs-lisp-mode-hook
@@ -568,6 +478,9 @@ USA.
 ;; templates
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
+	    ;; activating paredit-mode (installed via elpa)
+	    ;;(paredit-mode 1)
+
 	    ;; add-hook
 	    (define-skeleton elisp-skeleton-add-hook
 	      "Insert an add-hook block" nil
@@ -602,8 +515,21 @@ USA.
 	    (setq skeleton-end-hook nil)))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; clojure-mode 
+;;
+;; http://wiki.unto.net/setting-up-clojure-and-slime
+;; http://riddell.us/ClojureWithEmacsSlimeSwankOnUbuntu.html
+
+(add-to-list 'load-path "~/apps/clojure-mode")
+(add-to-list 'load-path "~/apps/swank-clojure")
+(add-to-list 'load-path "~/apps/slime")
+
+(setq swank-clojure-jar-path "~/apps/clojure/1.1/clojure.jar")
+
+(require 'clojure-mode)
+(require 'swank-clojure)
+(require 'slime)
 
 (add-hook 'clojure-mode-hook
 	  (lambda ()
@@ -614,6 +540,9 @@ USA.
 
 	    (local-set-key (kbd "<tab>") 'complete-clojure)))
 
+(eval-after-load "slime" (slime-setup '(slime-repl)))
+(slime-setup)
+
 ; slime-repl customisation
 (add-hook 'slime-repl-hook
  (lambda ()
@@ -621,41 +550,265 @@ USA.
    (slime-repl-eval-string "(use 'clojure.contrib.repl-utils)")))
 
 ;; slime (mapped to F3)
-(defun force-swith-to-slime() 
+(defun force-switch-to-slime() 
   (interactive)
   (if (slime-connected-p)
     (slime-switch-to-output-buffer)
     (slime)))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; erc-mode
-   
-(require 'erc-join) 
-(erc-autojoin-mode 1)
-(setq erc-autojoin-channels-alist
-          '(("freenode.net" "#clojure" "#emacs")))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; c-mode 
+;;
 
-(add-hook 'erc-mode-hook
-          '(lambda ()
-	     (setq erc-user-full-name "Davide Angelocola")
-	     (setq erc-email-userid "davide.angelocola@gmail.com")
-	     (erc-button-mode -1) 
-             (require 'erc-pcomplete)
-             (pcomplete-erc-setup)
-             (erc-completion-mode 1)))
+;; must have minor modes
+(add-hook 'c-mode-common-hook
+	  (lambda ()
+	    (c-subword-mode 1)
+	    (c-toggle-hungry-state 1)
+	    (c-toggle-auto-newline 1)))
 
-(defun erc-maybe ()
-  "Connect to IRC."
+;; to automatically fill comments but not code
+(add-hook 'c-mode-common-hook
+	  (lambda ()
+	    (auto-fill-mode 1)
+	    (set (make-local-variable 'fill-nobreak-predicate)
+		 (lambda ()
+		   (not (eq (get-text-property (point) 'face)
+			    'font-lock-comment-face))))))
+
+;; common skeletons
+(add-hook 'c-mode-common-hook
+	  (lambda ()
+	    ;; do-while
+	    (define-skeleton c-common-skeleton-do
+	      "Insert a do-while block" nil
+	      > "do {"\n
+	      _ \n
+	      -4"} while ();")
+
+	    ;; while
+	    (define-skeleton c-common-skeleton-while
+	      "Insert a while block" nil
+	      >"while (" _ ") {"\n
+	      \n
+	      -4"}")
+
+	    ;; for
+	    (define-skeleton c-common-skeleton-for
+	      "Insert a for block" nil
+	      > "for (" _ ";;) {"\n
+	      \n
+	      -4"}")
+
+	    ;; switch
+	    (define-skeleton c-common-skeleton-switch
+	      "Insert a switch block" nil
+	      > "switch (" _ ") {"\n
+	      \n
+	      "default:"\n
+	      -4"}")
+
+	    ;; if
+	    (define-skeleton c-common-skeleton-if
+	      "Insert an if block" nil
+	      > "if (" _ ") {"\n
+	      \n
+	      -4"}")
+
+	    ;; else
+	    (define-skeleton c-common-skeleton-else
+	      "Insert an else block" nil
+	      > "else {"\n
+	      _ \n
+	      -4"}")
+
+	    ;; else if
+	    (define-skeleton c-common-skeleton-else-if
+	      "Insert an else-if block" nil
+	      > "else if(" _ ") {"\n
+	      \n
+	      -4"}")
+
+	    ;; mapping skeletons
+	    (local-set-key "\C-cid" 'c-common-skeleton-do)
+	    (local-set-key "\C-ciw" 'c-common-skeleton-while)
+	    (local-set-key "\C-cif" 'c-common-skeleton-for)
+	    (local-set-key "\C-cis" 'c-common-skeleton-switch)
+	    (local-set-key "\C-cii" 'c-common-skeleton-if)
+	    (local-set-key "\C-cie" 'c-common-skeleton-else)
+	    (local-set-key "\C-cil" 'c-common-skeleton-else-if)
+
+	    ;; end
+	    (setq skeleton-end-hook nil)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; c-mode
+
+;; style and other generic stuff
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    ;; My C style
+	    (defconst my-c-style
+	      '(
+		(c-tab-always-indent . t)
+		(c-tab-width . 2)
+		(c-indent-tabs-mode . 1)
+		(c-basic-offset . 2)
+		(comment-multi-line t)
+		)
+	      "My C Programming Style")
+
+	    ;; add my personal style and set it for the current buffer
+	    (c-add-style "dfa" my-c-style t)
+
+	    ;; setting # behavior
+	    (setq c-electric-pound-behavior '(alignleft))))
+
+;; FlyMake
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (load-library "flymake")
+
+	    ;; loads flymake when possible
+	    (add-hook 'find-file-hooks 'flymake-find-file-hook)
+
+	    ;; disable GUI warnings
+	    (setq flymake-gui-warnings-enabled nil)
+
+	    ;; speedup
+	    (setq flymake-start-syntax-check-on-newline nil)
+
+	    ;; a somewhat handy function
+	    (defun my-flymake-show-next-error()
+	      (interactive)
+	      (flymake-goto-next-error)
+	      (flymake-display-err-menu-for-current-line))
+
+	    ;; bind it to C-c C-v
+	    (local-set-key "\C-c\C-v" 'my-flymake-show-next-error)))
+
+;; move whole functions around...
+(defun my-move-function-up ()
+  "Swap the current (whole) function with the function above."
   (interactive)
-  (when (y-or-n-p "IRC? ")
-    (erc :server "irc.freenode.net" 
-	 :port 6667
-	 :nick "dfa2" 
-	 :full-name "Davide Angelocola")))
+  (c-mark-function)
+  (kill-region (region-beginning) (region-end))
+  (c-beginning-of-defun 1)
+  (yank))
+
+(defun my-move-function-down ()
+  "Swap the current (whole) function with the function below."
+  (interactive)
+  (c-mark-function)
+  (kill-region (region-beginning) (region-end))
+  (c-beginning-of-defun -1)
+  (yank))
+
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (local-set-key "\C-cd" 'my-move-function-up)
+	    (local-set-key "\C-cf" 'my-move-function-down)))
+
+;; c preprocessor
+(setq c-macro-shrink-window-flag t)
+(setq c-macro-prompt-flag nil)
+(setq c-macro-preprocessor "cpp -C")
+
+;; .l, .gperf and .tc uses c-mode
+(add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.gperf$" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.tc$" . c-mode))
+
+(defun secure-string-match(regexp string)
+  "prevent string-match to receive a nil as string" ;; FIXME
+  (if (not (eq string nil))
+      (string-match regexp buffer-file-name)))
+
+;; disable auto-state on .y, .l, .tc or .gperf files
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (mapc (lambda (r)
+		    (when (secure-string-match r buffer-file-name)
+		      (c-toggle-auto-newline -1)))
+		  '("\\.l$" "\\.y$" "\\.tc$" "\\.gperf"))))
+
+;; disable flymake-mode for .h files
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (mapc (lambda (r)
+		    (when (secure-string-match r buffer-file-name)
+		      (flymake-mode -1)))
+		  '("\\.h$"))))
+
+;; highlight %option for .l, .y and .tc files
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (mapc (lambda (r)
+		    (when (secure-string-match r buffer-file-name)
+		      (font-lock-add-keywords nil
+	      '(("%\\<\\(option\\)\\>" 1 font-lock-warning-face prepend)))))
+		  '("\\.l$" "\\.y$" "\\.tc$"))))
+
+;; highlight for treecc files
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (mapc (lambda (r)
+		    (when (secure-string-match r buffer-file-name)
+		      (font-lock-add-keywords nil
+					      '(("%\\<\\(abstract\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(node\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(virtual\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(inline\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(split\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(include\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(operation\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(nocreate\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(decls\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(both\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(end\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(readonly\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(header\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(output\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(outdir\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(common\\)\\>" 1 font-lock-keyword-face prepend)))))
+		  '("\\.tc$"))))
+
+;; highlight for bison files
+(add-hook 'c-mode-hook
+	  (lambda () 
+	    (mapc (lambda (r)
+		    (when (secure-string-match r buffer-file-name)
+		      (font-lock-add-keywords nil
+					      '(("%\\<\\(prec\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(token\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(left\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(right\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(nonassoc\\)\\>" 1 font-lock-keyword-face prepend)
+						("%\\<\\(type\\)\\>" 1 font-lock-keyword-face prepend)
+						("\\<\\(error\\)\\>" 1 font-lock-warning-face prepend)))))
+		  '("\\.y$"))))
+
+;; C specific skeletons
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    ;; main
+	    (define-skeleton c-skeleton-main
+	      "Insert a main()" nil
+	      > "int main(int argc, char \**argv)"\n
+	      -4"{"\n
+	      _ \n
+	      -4"}")
+
+	    ;; mapping skeletons
+	    (local-set-key "\C-cim" 'c-skeleton-main)
+
+	    ;; end
+	    (setq skeleton-end-hook nil)))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; text-mode
 
 ;; enabling auto-fill-mode with text-mode
@@ -674,7 +827,7 @@ USA.
 (add-to-list 'auto-mode-alist '("COPYING" . text-mode))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LaTeX
 
 (setq-default TeX-master nil) 
@@ -683,7 +836,7 @@ USA.
 
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
-	    ;; italian accents; I don't like the italian keyboard's layout
+	    ;; italian accents
 	    (define-skeleton latex-e-skeleton
 	      "Insert \`{e} " nil
 	      > "\\`{e}" _)
@@ -718,7 +871,51 @@ USA.
 	    (local-set-key (kbd "<tab>") 'complete-latex)))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  shell
+
+(defun bash ()
+  (interactive)
+  (when (not (get-buffer "*ansi-term*"))
+    (ansi-term "bash"))
+  (switch-to-buffer "*ansi-term*"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; erc-mode
+   
+(require 'erc-join)
+
+(add-hook 'erc-mode-hook
+          '(lambda ()
+	     (setq erc-user-full-name "Davide Angelocola")
+	     (setq erc-email-userid "davide.angelocola@gmail.com")
+	     (setq erc-interpret-mirc-color t)
+	     (setq erc-kill-buffer-on-part t)
+	     (setq erc-kill-queries-on-quit t)
+	     (setq erc-kill-server-buffer-on-quit t)
+	     (erc-button-mode -1) 
+             (require 'erc-pcomplete)
+             (pcomplete-erc-setup)
+             (erc-completion-mode 1)))
+
+(defun irc()
+  "Connect to IRC."
+  (interactive)
+  (let ((channel (car (erc-channel-list nil))))
+    (if (not channel)
+	(when (y-or-n-p "connect to IRC? ")
+	  (erc))
+      (switch-to-buffer channel))))
+
+;; autojoin
+(erc-autojoin-mode 1)
+(setq erc-autojoin-channels-alist
+          '(("freenode.net" "#clojure" "#emacs")
+	    ("signalos.org" "#ahccc")))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  X window stuff
 
 (when window-system
@@ -731,16 +928,17 @@ USA.
 
   ;; display those special buffer frames without a tool bar
   (setq special-display-frame-alist nil)
+
+  ;; customizing frame look
   (add-to-list 'special-display-frame-alist '(tool-bar-lines . 0))
   (add-to-list 'special-display-frame-alist '(menu-bar-lines . 0))
   (add-to-list 'special-display-frame-alist '(height . 10))
   (add-to-list 'special-display-frame-alist '(width . 80))
   (add-to-list 'special-display-frame-alist '(unsplittable . t))
-
-  ;; customizing frame look
   (add-to-list 'default-frame-alist '(cursor-color . "white"))
   (add-to-list 'default-frame-alist '(foreground-color . "white"))
   (add-to-list 'default-frame-alist '(background-color . "MidnightBlue"))
+  (add-to-list 'default-frame-alist '(font . "Monospace-10"))
 
   ;; disabling the toolbar and the scrollbar
   (tool-bar-mode -1)
@@ -755,29 +953,25 @@ USA.
   (setq scroll-step 1)
   (setq scroll-conservatively 1))
 
-;; open recent files at init
-(recentf-open-files)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My Keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; global key bindings
 
-;; additional "native windows" behaviour 
-(global-set-key [C-tab] 'next-buffer)
-(global-set-key [C-S-tab] 'previous-buffer)
-
-(global-set-key [M-f4] 'save-buffers-kill-emacs)
-(global-set-key "\C-f" 'isearch-forward)
-(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
-(global-set-key "\C-o" 'find-file)
+;; *mental sanity mode*: use C-f for search, and other "Windows" keystrokes..
 (global-set-key "\C-s" 'save-buffer)
-(global-set-key "\C-w" 'kill-this-buffer)
-
+(global-set-key "\C-f" 'isearch-forward-regexp)
 (global-unset-key "\C-x\C-l")
 (global-set-key "\C-x\C-l" 'recenter)
 (global-unset-key "\C-l")
 (global-set-key "\C-l" 'goto-line)
-(global-set-key "\C-xq" 'kill-other-buffers) ;; FIXME: use C-S-w, as in netbeans
+(global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
+
 (global-set-key "\C-b" 'ibuffer)
+
+(global-set-key "\C-xvp" 'mercurial-push-cwd)
+
+(global-set-key "\C-c\C-c" 'mode-compile)
+(global-set-key "\C-c\C-k" 'mode-compile-kill)
 
 (global-set-key "\M-`" 'quick-calc)
 (global-set-key "\M-1" 'woman)
@@ -787,3 +981,28 @@ USA.
 (global-set-key "\M-4" 'locate)
 (global-set-key "\M-5" 'highlight-regexp)
 (global-set-key "\M-6" 'unhighlight-regexp)
+(global-set-key "\M-7" 'column-ruler)
+(global-set-key "\M-9" 'decrement-number-at-point)
+(global-set-key "\M-0" 'increment-number-at-point)
+
+(global-set-key [f1] 'man-local)
+(global-set-key [f2] 'bash)
+(global-set-key [f3] 'force-switch-to-slime)
+(global-set-key [f4] 'irc)
+(global-set-key [f5] 'insert-date)
+(global-set-key [f6] 'insert-time)
+(global-set-key [f7] 'insert-time-and-date)
+(global-set-key [f8] 'insert-name-and-email)
+(global-set-key [f9] 'insert-gpl-header)
+(global-set-key [f12] 'recentf-open-files)
+
+;; netbeans-like clone line/region
+(global-set-key [C-S-down] 'clone-region-or-line)
+(global-set-key [C-S-up] 'clone-region-or-line)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; recentf
+
+;; open recent files at init
+(recentf-open-files)
