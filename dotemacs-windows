@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-20 01:23:38 dfa>
+;; Time-stamp: <2010-12-24 09:28:56 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -17,7 +17,6 @@
 ;;   - F4 open/returns to ERC
 ;;   - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
 ;;   - call (use 'clojure.contrib.repl-utils) with repl-hook
-;;   - refactor all global key bindings at the end of this file
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
