@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-24 09:28:56 dfa>
+;; Time-stamp: <2010-12-24 09:29:46 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -192,7 +192,6 @@
 
 ;; cua mode
 (cua-mode 1)
-(setq cua-keep-region-after-copy t)
 
 ;; enable column number on all major modes
 (column-number-mode 1)
