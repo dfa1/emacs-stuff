@@ -33,6 +33,7 @@ dotemacs       - the final dotemacs
 desiderata
 ==========
 
+- use add-to-list in auto-insert-alist
 - C-M-q should be mapped to M-S-f (as in netbeans)
 - F4 open/returns to ERC
 - call (use 'clojure.contrib.repl-utils) with repl-hook
@@ -40,7 +41,7 @@ desiderata
 - clojure mode on windows depends on clojure box
 - secure-string-match first arg cannot be nil
 - skeleton-pair or my inser-pair
-- use windows-type to load different os specific configurations
+- add header at the top of each file
 
 
 done
@@ -49,3 +50,4 @@ done
 - use C-space to complete symbol (as in netbeans)
 - remove worthless functions
 - removed compile-mode 
+- use system-type to load different os specific configurations
