@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-24 09:36:19 dfa>
+;; Time-stamp: <2010-12-24 09:49:53 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -656,15 +656,6 @@ USA.
 	 :port 6667
 	 :nick "dfa2" 
 	 :full-name "Davide Angelocola")))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; html-mode
-
-;; (add-hook 'html-mode-hook
-;; 	  (lambda ()
-;; 	    ;; setting indent-line-function
-;; 	    (setq indent-line-function 'indent-relative)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
