@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-24 09:53:50 dfa>
+;; Time-stamp: <2010-12-24 09:56:46 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -174,7 +174,7 @@
 (setq vc-follow-symlinks t)
 
 ;; mercurial push 
-(defun mercurial-push-cwd () 
+(defun mercurial-push-cwd () 		; TODO: write a generic function
   (interactive)
   (generate-new-buffer "*hg push*")
   (switch-to-buffer "*hg push*")
@@ -209,7 +209,7 @@
 (require 'autoinsert)
 
 (setq auto-insert-query nil)
-(setq auto-insert-alist
+(setq auto-insert-alist ;; TODO: move in specific files
       '(((shell-script-mode . "Shell Program")
 	 nil
 	 "#!/bin/bash\n")
