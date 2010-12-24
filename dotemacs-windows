@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-24 09:49:53 dfa>
+;; Time-stamp: <2010-12-24 09:53:50 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -276,7 +276,7 @@
     (yank)
     (goto-char start)))
 
-(global-set-key [C-S-down] 
+(global-set-key [C-S-down]
 		'(lambda () 
 		   (interactive)
 		   (if (region-active-p)
@@ -764,7 +764,7 @@ USA.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My Keybindings
 
-;; additional "navite windows" behaviour 
+;; additional "native windows" behaviour 
 (global-set-key [C-tab] 'next-buffer)
 (global-set-key [C-S-tab] 'previous-buffer)
 
