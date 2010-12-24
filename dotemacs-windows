@@ -2,7 +2,7 @@
 ;; My .emacs for Microsoft Windows 7
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-24 09:56:46 dfa>
+;; Time-stamp: <2010-12-24 09:58:25 dfa>
 ;;
 ;; forked from "dotemacs" (no longer maintained):
 ;;   - removed C/Java mode customizations
@@ -166,9 +166,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; VC 
-
-;; prompt for initial comment when a file is registered
-(setq vc-initial-comment t)
 
 ;; automatically follow symlinks
 (setq vc-follow-symlinks t)
