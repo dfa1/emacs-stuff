@@ -2,10 +2,10 @@ Splitted configuration
 ======================
 
 Since my .emacs is quite big (about 1k lines), and since I use GNU
-Emacs both Windows and GNU Linux distros, the need of better separation 
+Emacs both Windows and GNU Linux distros, the need of a better separation 
 of concerns arose. 
 
-My new layout is:
+TODO: to be updated
 
 basic.el       - basic editing commands
 editing.el     - custom editing functions
@@ -23,10 +23,8 @@ erc.el         - ERC configuration
 gui.el         - windows stuff
 keymap.el      - global keybindings
 
-windows.el     - windows specific customizations 
+ms-windows.el     - windows specific customizations 
 ubuntu.el      - ubuntu specific customizations  
-
-dotemacs       - the final dotemacs
 
 
 
@@ -40,13 +38,14 @@ desiderata
 - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
 - clojure mode on windows depends on clojure box
 - secure-string-match first arg cannot be nil
-- skeleton-pair or my inser-pair
 - add header at the top of each file
 
 
 done
 ====
 
+- implemented discovery of .el files
+- provide/require for splitted-init.el
 - use C-space to complete symbol (as in netbeans)
 - remove worthless functions
 - removed compile-mode 

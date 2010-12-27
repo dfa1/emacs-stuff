@@ -1,13 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; erc-mode
    
-(require 'erc-join) 
-(erc-autojoin-mode 1)
-(setq erc-autojoin-channels-alist
-          '(("freenode.net" "#clojure" "#emacs")))
-
 (add-hook 'erc-mode-hook
           '(lambda ()
+	     (setq  erc-server-coding-system '(utf-8 . utf-8))
 	     (setq erc-user-full-name "Davide Angelocola")
 	     (setq erc-email-userid "davide.angelocola@gmail.com")
 	     (erc-button-mode -1) 

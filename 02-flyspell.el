@@ -7,14 +7,12 @@
 ;; sort corrections
 (setq flyspell-sort-corrections nil)
 
-;; TODO: enable-flyspell-for-mode
-;; enable flyspell 
-(dolist (hook '(text-mode-hook))
+(defun enable-flyspell-for (hook)
+  "Helper to enable `flyspell-mode' in hook."
   (add-hook hook (lambda ()
-		   (flyspell-mode 1))))
+		    (flyspell-mode))))
 
-;; enable flyspell-prog-mode for some modes 
-(dolist (hook '(clojure-mode-hook
-		emacs-lisp-mode-hook))
+(defun enable-prog-flyspell-for (hook) 
+  "Helper to enable `flyspell-prog-mode' in hook."
   (add-hook hook (lambda ()
-		   (flyspell-prog-mode))))
+		    (flyspell-prog-mode))))

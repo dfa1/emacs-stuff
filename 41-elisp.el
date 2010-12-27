@@ -4,18 +4,16 @@
 ;; bytecompile dotemacs 
 (require 'bytecomp)
 
-;; (defun compile-dotemacs ()
-;;   "Compile the dotemacs file."
-;;   (interactive)
-;;   (if (string= (buffer-file-name) 
-;; 	       (expand-file-name (concat default-directory "dotemacs-windos")))
-;;       (byte-compile-file (buffer-file-name))))
+(defun compile-buffer ()
+  "Compile the current buffer."
+  (interactive)
+  (byte-compile-file (buffer-file-name)))
 
 ;; autocompile dotemacs at save
-(add-hook 'after-save-hook 'compile-dotemacs)
+(add-hook 'after-save-hook 'compile-buffer)
 
-;; use emacs-lisp-mode for "dotemacs-windows"
-(add-to-list 'auto-mode-alist '("dotemacs-windows" . emacs-lisp-mode))
+;; TODO: hack to load emacs-lisp-mode for "dotemacs-windows"
+;; (add-to-list 'auto-mode-alist '("dotemacs-windows" . emacs-lisp-mode))
 
 ;; enable eldoc
 (add-hook 'emacs-lisp-mode-hook
