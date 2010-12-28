@@ -4,25 +4,14 @@
   (dolist (file (discover-init-files path))
     (load-file (concat path "/" file))))
 
-  ;; ;; loads specific windows customizations
-  ;; (when (string-equal system-type "windows-nt")
-  ;;   (load-file "windows.el"))
-  
-  ;; ;; ditto for gnu/linux
-  ;; (when (string-equal system-type "gnu/linux")
-  ;;   (load-file "ubuntu.el"))
-
-  ;; open recent files at init
-  ;; (recentf-open-files))
-
 (defun filter (condp lst)
   "Standard high-order `filter' function."
-    (delq nil
-          (mapcar (lambda (x) (if (funcall condp x) x)) lst)))
+  (delq nil
+	(mapcar (lambda (x) (if (funcall condp x) x)) lst)))
 
 (defun elisp-file-p (path)
   "Returns nil if the path is not an elisp file."
-   (string-match-p "^[0-9][0-9]-.*\.el$" path)) ;; TODO: improve regexp
+  (string-match-p "^[0-9][0-9]-.*\.el$" path))
 
 ;; unit tests
 ;; (elisp-file-p "00-test.el")
