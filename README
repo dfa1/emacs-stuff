@@ -39,6 +39,10 @@ desiderata
 - clojure mode on windows depends on clojure box
 - secure-string-match first arg cannot be nil
 - add header at the top of each file
+- ascii-table on a separate frame
+- (add-hook 'before-save-hook 'copyright-update)
+- (require 'uniquify)
+  (setq uniquify-buffer-name-style 'post-forward
 
 
 done
