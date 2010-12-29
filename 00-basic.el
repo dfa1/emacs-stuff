@@ -2,7 +2,7 @@
 ;; Basic editing environment.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 02:26:18 dfa>
+;; Time-stamp: <2010-12-29 02:28:29 dfa>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
@@ -41,7 +41,7 @@
 (setq compilation-scroll-output t)
 
 ;; undo limit
-(setq undo-limit 40000)
+(setq undo-limit 1000000)
 
 ;; make all "yes or no" prompts show "y or n" instead
 (fset 'yes-or-no-p 'y-or-n-p)
