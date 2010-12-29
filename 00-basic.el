@@ -2,7 +2,7 @@
 ;; Basic editing environment.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 02:21:45 dfa>
+;; Time-stamp: <2010-12-29 02:26:18 dfa>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
@@ -80,16 +80,13 @@
       '(".o" ".lo" ".so" ".elc" ".class"))
 
 ;; do a "chmod u+x" when you save a script file (starting with "#!")
-(add-hook 'after-save-hook
-	  'executable-make-buffer-file-executable-if-script-p)
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; update timestamp
-(add-hook 'before-save-hook 
-	  'time-stamp)
+(add-hook 'before-save-hook 'time-stamp)
 
 ;; don't echo passwords when communicating with interactive programs
-(add-hook 'comint-output-filter-functions 
-	  'comint-watch-for-password-prompt)
+(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -99,6 +96,7 @@
 (global-font-lock-mode t)
 
 ;; highlight FIXME, TODO and XXX as warning in some major modes
+;; TODO: these should not be declared here
 (dolist (mode '(
 		latex-mode
 		LaTeX-mode
@@ -115,25 +113,6 @@
 
 (setq font-lock-support-mode 'jit-lock-mode
       fast-lock-cache-directories '("~/.emacs-flc"))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; text-mode
-
-;; enabling auto-fill-mode with text-mode
-
-(add-hook 'text-mode-hook
-	  '(lambda ()
-	     (auto-fill-mode 1)))
-
-;; enter text-mode when opening a file named 'README', 'INSTALL' and so on
-(add-to-list 'auto-mode-alist '("README" . text-mode))
-(add-to-list 'auto-mode-alist '("INSTALL" . text-mode))
-(add-to-list 'auto-mode-alist '("NEWS" . text-mode))
-(add-to-list 'auto-mode-alist '("TODO" . text-mode))
-(add-to-list 'auto-mode-alist '("AUTHORS" . text-mode))
-(add-to-list 'auto-mode-alist '("THANKS" . text-mode))
-(add-to-list 'auto-mode-alist '("COPYING" . text-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
