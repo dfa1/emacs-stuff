@@ -32,13 +32,12 @@ desiderata
 ==========
 
 - use add-to-list in auto-insert-alist
-- C-M-q should be mapped to M-S-f (as in netbeans)
+- C-M-q should be mapped to M-S-f (as rin netbeans)
 - F4 open/returns to ERC
 - call (use 'clojure.contrib.repl-utils) with repl-hook
 - clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
 - clojure mode on windows depends on clojure box
 - secure-string-match first arg cannot be nil
-- add header at the top of each file
 - (add-hook 'before-save-hook 'copyright-update)
 
 

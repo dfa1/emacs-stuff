@@ -1,7 +1,9 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My Keybindings
+;;
+;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
+;; Time-stamp: <2010-12-29 17:07:06 dfa>
 
-;; additional "native windows" behaviour 
 (global-set-key [C-tab] 'next-buffer)
 (global-set-key [C-S-tab] 'previous-buffer)
 
@@ -67,3 +69,7 @@
 		   (if (region-active-p)
 		       (clone-region)
 		     (clone-line-above))))
+
+;; defined in 20.hg.el
+(global-set-key "\C-xvp" 'mercurial-push-cwd)
+

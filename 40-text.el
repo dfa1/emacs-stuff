@@ -1,7 +1,8 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; text-mode
-
-;; enabling auto-fill-mode with text-mode
+;;
+;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
+;; Time-stamp: <2010-12-29 16:59:22 dfa>
 
 (add-hook 'text-mode-hook
 	  '(lambda ()

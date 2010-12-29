@@ -1,3 +1,9 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Custom commands.
+;;
+;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
+;; Time-stamp: <2010-12-29 16:53:16 dfa>
+
 (defun kill-other-buffers ()
   "Kill all other buffers."
   (interactive)
@@ -145,6 +151,7 @@ USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ManHtml
+;;
 ;; source:
 ;;   http://www.emacswiki.org/cgi-bin/wiki/ManHtml
 (setq man-local-alist

@@ -1,5 +1,9 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; m4-mode
+;; (XXX: I don't use this stuff since 2004)
+;;
+;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
+;; Time-stamp: <2010-12-29 17:03:31 dfa>
 
 ;; autotest
 (add-to-list 'auto-mode-alist '("\\.at$" . m4-mode))

@@ -1,5 +1,8 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; emacs-lisp
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; text-mode
+;;
+;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
+;; Time-stamp: <2010-12-29 16:59:59 dfa>
 
 ;; enable flyspell-prog-mode
 (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
@@ -55,7 +58,7 @@
 	    ;; end
 	    (setq skeleton-end-hook nil)))
 
-;; compile on save .el files
+;; TODO: compile on save .el files
 ;;
 ;; (require 'bytecomp)
 ;;
