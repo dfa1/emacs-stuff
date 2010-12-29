@@ -1,7 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  X window stuff
 (when window-system
-  (print "aa")
   ;; display various non-editing buffers in their own frames
   (setq special-display-buffer-names
 	(nconc '("*Backtrace*"
