@@ -6,8 +6,7 @@
   (setq special-display-buffer-names
 	(nconc '("*Backtrace*"
 		 "*vc-change-log*"
-		 "*VC-log*"
-		 "*ASCII*") 
+		 "*VC-log*")
 	       special-display-buffer-names))
 
   ;; display those special buffer frames without a tool bar
