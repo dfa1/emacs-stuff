@@ -2,7 +2,7 @@
 ;; Basic editing environment.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-24 14:10:43 dfa>
+;; Time-stamp: <2010-12-29 02:21:07 dfa>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
@@ -14,7 +14,6 @@
 (setq user-full-name "Davide Angelocola")
 (setq user-mail-address "davide.angelocola@gmail.com")
 (setq current-language-environment "English")
-
 
 ;; see what I'm typing *immediately*
 (setq echo-keystrokes 0.01)
@@ -184,3 +183,7 @@
 
 ;; disable over-write mode
 (put 'overwrite-mode 'disabled t)
+
+;; basic setup for uniquify
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
