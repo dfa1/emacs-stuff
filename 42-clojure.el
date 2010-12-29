@@ -25,3 +25,29 @@
 
 ;; enable flyspell-prog-mode
 (add-hook 'clojure-mode-hook 'flyspell-prog-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; clojure-mode without clojure-box 
+;;
+;; http://wiki.unto.net/setting-up-clojure-and-slime
+;; http://riddell.us/ClojureWithEmacsSlimeSwankOnUbuntu.html
+
+;; (add-to-list 'load-path "~/apps/clojure-mode")
+;; (add-to-list 'load-path "~/apps/swank-clojure")
+;; (add-to-list 'load-path "~/apps/slime")
+
+;; (setq swank-clojure-jar-path "~/apps/clojure/1.1/clojure.jar")
+
+;; (require 'clojure-mode)
+;; (require 'swank-clojure)
+;; (require 'slime)
+
+
+;; (eval-after-load "slime" (slime-setup '(slime-repl)))
+;; (slime-setup)
+
+;; ; slime-repl customisation
+;; (add-hook 'slime-repl-hook
+;;  (lambda ()
+;;    (slime-repl-eval-string "(set! *print-length* 10)")
+;;    (slime-repl-eval-string "(use 'clojure.contrib.repl-utils)")))
