@@ -22,3 +22,6 @@
   (if (slime-connected-p)
     (slime-switch-to-output-buffer)
     (slime)))
+
+;; enable flyspell-prog-mode
+(add-hook 'clojure-mode-hook 'flyspell-prog-mode)

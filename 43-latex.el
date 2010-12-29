@@ -42,3 +42,6 @@
 	      (smart-tab 'TeX-complete-symbol))
 
 	    (local-set-key (kbd "<tab>") 'complete-latex)))
+
+;; enabling flyspell
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)

@@ -13,6 +13,9 @@
 ;; autocompile dotemacs at save
 (add-hook 'after-save-hook 'compile-buffer)
 
+;; enable flyspell-prog-mode
+(add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
+
 ;; enable eldoc
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
