@@ -1,13 +1,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LaTeX
 
-(setq-default TeX-master nil) 
-(setq TeX-parse-self t)
-(setq TeX-auto-save t)
-(setq ispell-parser 'tex) ;; suggested by flyspell.el documentation
-
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
+	    ;; vars
+	    (setq-default TeX-master nil) 
+	    (setq TeX-parse-self t)
+	    (setq TeX-auto-save t)
+	    (setq ispell-parser 'tex) ;; suggested by flyspell.el documentation
+	    
 	    ;; italian accents; I don't like the italian keyboard's layout
 	    (define-skeleton latex-e-skeleton
 	      "Insert \`{e} " nil
@@ -35,7 +36,6 @@
 	    (local-set-key "\C-cu" 'latex-u-skeleton)
 	    (local-set-key "\C-ca" 'latex-a-skeleton)
 
-	    
 	    ;; autocompletion with tab-or-indent
 	    (defun complete-latex () 
 	      (interactive)
