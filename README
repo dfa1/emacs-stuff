@@ -23,8 +23,8 @@ erc.el         - ERC configuration
 gui.el         - windows stuff
 keymap.el      - global keybindings
 
-ms-windows.el     - windows specific customizations 
-ubuntu.el      - ubuntu specific customizations  
+ms-windows.el  - windows specific customizations 
+gnu-linux.el   - ubuntu specific customizations  
 
 
 
@@ -41,8 +41,6 @@ desiderata
 - add header at the top of each file
 - ascii-table on a separate frame
 - (add-hook 'before-save-hook 'copyright-update)
-- (require 'uniquify)
-  (setq uniquify-buffer-name-style 'post-forward
 
 
 done
