@@ -2,7 +2,7 @@
 ;; Basic editing environment.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 02:21:07 dfa>
+;; Time-stamp: <2010-12-29 02:21:45 dfa>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
@@ -171,10 +171,7 @@
 	 "#!/bin/bash\n")
 	((cperl-mode . "Perl Program")
 	 nil
-	 "#!/usr/bin/perl\n\nuse strict;\nuse warnings;\n\n")
-	((muse-mode . "Muse page")
-	 nil
-	 "#title ")))
+	 "#!/usr/bin/perl\n\nuse strict;\nuse warnings;\n\n")))
 
 (auto-insert-mode 1)
 
