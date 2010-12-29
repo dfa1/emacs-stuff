@@ -4,6 +4,7 @@
 (setq-default TeX-master nil) 
 (setq TeX-parse-self t)
 (setq TeX-auto-save t)
+(setq ispell-parser 'tex) ;; suggested by flyspell.el documentation
 
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
@@ -33,6 +34,7 @@
 	    (local-set-key "\C-co" 'latex-o-skeleton)
 	    (local-set-key "\C-cu" 'latex-u-skeleton)
 	    (local-set-key "\C-ca" 'latex-a-skeleton)
+
 	    
 	    ;; autocompletion with tab-or-indent
 	    (defun complete-latex () 
