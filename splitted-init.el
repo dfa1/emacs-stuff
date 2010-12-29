@@ -1,16 +1,18 @@
 ;; TODO: this file should be copied in site-lisp
+;; TODO: add sample configuration
 (defun load-splitted-init (path) 
-  "Load (via `load-file') an ordered set of files in way similar to rc.d."
+  "Load (via `load-file') an ordered set of files in way similar to rc.d
+init files."
   (dolist (file (discover-init-files path))
     (load-file (concat path "/" file))))
 
 (defun filter (condp lst)
-  "Standard high-order `filter' function."
+  "High-order `filter' function."
   (delq nil
 	(mapcar (lambda (x) (if (funcall condp x) x)) lst)))
 
 (defun elisp-file-p (path)
-  "Returns nil if the path is not an elisp file."
+  "Returns nil if the path is not a two-digits starting elisp file."
   (string-match-p "^[0-9][0-9]-.*\.el$" path))
 
 ;; unit tests
