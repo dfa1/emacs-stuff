@@ -1,18 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs-lisp
 
-;; bytecompile 
-(require 'bytecomp)
-
-(defun compile-buffer ()
-  "Compile the current buffer."
-  (interactive)
-  (when (elisp-file-p (buffer-file-name))
-		      (byte-compile-file (buffer-file-name))))
-
-;; autocompile dotemacs at save
-(add-hook 'after-save-hook 'compile-buffer)
-
 ;; enable flyspell-prog-mode
 (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
 
@@ -66,3 +54,15 @@
 
 	    ;; end
 	    (setq skeleton-end-hook nil)))
+
+;; compile on save .el files
+;;
+;; (require 'bytecomp)
+;;
+;; (defun compile-buffer ()
+;;   "Compile the current buffer."
+;;   (interactive)
+;;   (when (elisp-file-p (file-name-nondirectory (buffer-file-name)))
+;;     (byte-compile-file (buffer-file-name))))
+;;
+;; (add-hook 'after-save-hook 'compile-buffer)
