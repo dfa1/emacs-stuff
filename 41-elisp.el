@@ -1,13 +1,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs-lisp
 
-;; bytecompile dotemacs 
+;; bytecompile 
 (require 'bytecomp)
 
 (defun compile-buffer ()
   "Compile the current buffer."
   (interactive)
-  (byte-compile-file (buffer-file-name)))
+  (when (elisp-file-p (buffer-file-name))
+		      (byte-compile-file (buffer-file-name))))
 
 ;; autocompile dotemacs at save
 (add-hook 'after-save-hook 'compile-buffer)
