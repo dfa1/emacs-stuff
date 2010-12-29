@@ -2,13 +2,13 @@
 ;; Basic ERC customizations
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 17:06:13 dfa>
+;; Time-stamp: <2010-12-29 19:50:45 dfa>
    
 (add-hook 'erc-mode-hook
           '(lambda ()
 	     (setq  erc-server-coding-system '(utf-8 . utf-8))
-	     (setq erc-user-full-name "Davide Angelocola")
-	     (setq erc-email-userid "davide.angelocola@gmail.com")
+	     (setq erc-user-full-name "dfa")
+	     (setq erc-email-userid "dfa")
 	     (erc-button-mode -1) 
              (require 'erc-pcomplete)
              (pcomplete-erc-setup)
