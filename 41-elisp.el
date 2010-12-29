@@ -2,7 +2,7 @@
 ;; text-mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 16:59:59 dfa>
+;; Time-stamp: <2010-12-29 21:27:54 dfa>
 
 ;; enable flyspell-prog-mode
 (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
@@ -65,7 +65,7 @@
 ;; (defun compile-buffer ()
 ;;   "Compile the current buffer."
 ;;   (interactive)
-;;   (when (elisp-file-p (file-name-nondirectory (buffer-file-name)))
+;;   (when (init-file-p (buffer-file-name))
 ;;     (byte-compile-file (buffer-file-name))))
 ;;
 ;; (add-hook 'after-save-hook 'compile-buffer)
