@@ -1,8 +1,3 @@
-
-
-
-
-
 (defun kill-other-buffers ()
   "Kill all other buffers."
   (interactive)
@@ -16,7 +11,6 @@
   (if (= (point) (save-excursion (back-to-indentation) (point)))
       (beginning-of-line)
     (back-to-indentation)))
-
 
 ;; clone line as on netbeans
 (defun clone-line-below()
@@ -47,13 +41,11 @@
     (yank)
     (goto-char start)))
 
-
 ;; other special commands
 (defun insert-shell-command-output (command)
   "Prompt for a command the insert it's output at point"
   (interactive "sInsert command output: ")
   (insert (shell-command-to-string command)))
-
 
 ;; source:
 ;;   http://www.emacswiki.org/cgi-bin/wiki/PopupRuler
@@ -75,7 +67,6 @@
 	     (substring result1 0 width) "\n"))
    (line-beginning-position) nil "[space] Clears ruler"))
 
-
 (defun increment-number-at-point ()
   "Increment the number at point"
   (interactive)
@@ -84,7 +75,6 @@
       (error "No number at point"))
   (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
 
-
 (defun decrement-number-at-point ()
   "Decrement number at point"
   (interactive)
@@ -92,8 +82,6 @@
   (or (looking-at "[0123456789]+")
       (error "No number at point"))
   (replace-match (number-to-string (1- (string-to-number (match-string 0))))))
-
-
 
 ;; insert the date, the time, and the date and time at point. Insert
 ;; the date 31 days hence at point, eventually...
@@ -179,12 +167,8 @@ USA.
      (list page)))
   (browse-url (cadr (assoc what man-local-alist))))
 
-
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Handy macros
-
 (setq local-vars "Local Variables:\n\nEnd:\n") 
 
 (defun insert-local-variables ()
@@ -242,5 +226,3 @@ USA.
   "prevent string-match to receive a nil as string" ;; FIXME
   (if (not (eq string nil))
       (string-match regexp buffer-file-name)))
-
-

@@ -1,11 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  X window stuff
 (when window-system
+  (print "aa")
   ;; display various non-editing buffers in their own frames
   (setq special-display-buffer-names
 	(nconc '("*Backtrace*"
 		 "*vc-change-log*"
-		 "*VC-log*") 
+		 "*VC-log*"
+		 "*ASCII*") 
 	       special-display-buffer-names))
 
   ;; display those special buffer frames without a tool bar
