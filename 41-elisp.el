@@ -13,9 +13,6 @@
 ;; autocompile dotemacs at save
 (add-hook 'after-save-hook 'compile-buffer)
 
-;; TODO: hack to load emacs-lisp-mode for "dotemacs-windows"
-;; (add-to-list 'auto-mode-alist '("dotemacs-windows" . emacs-lisp-mode))
-
 ;; enable eldoc
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
