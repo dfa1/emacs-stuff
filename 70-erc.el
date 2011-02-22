@@ -25,7 +25,7 @@
 	     (setq erc-kill-buffer-on-part t)
 	     (setq erc-kill-queries-on-quit t)
 	     (setq erc-kill-server-buffer-on-quit t)
-	     (setq erc-auto-reconnect nil)
+	     (setq erc-auto-reconnect t)
 	     (setq erc-part-reason 
 		   (lambda (ignored) "nerds deal only with nerds"))
 	     (erc-button-mode 1) 
