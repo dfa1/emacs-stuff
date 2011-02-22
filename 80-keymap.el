@@ -2,7 +2,7 @@
 ;; My Keybindings
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 17:07:06 dfa>
+;; Time-stamp: <2011-02-22 09:45:36 dangelocola>
 
 (global-set-key [C-tab] 'next-buffer)
 (global-set-key [C-S-tab] 'previous-buffer)
@@ -22,7 +22,7 @@
 (global-set-key "\C-b" 'ibuffer)
 
 (global-set-key "\M-`" 'quick-calc)
-(global-set-key "\M-1" 'woman)
+(global-set-key "\M-1" 'man)
 (global-set-key "\M-2" 'shell-command)
 (global-set-key "\M-@" 'insert-shell-command-output)
 (global-set-key "\M-3" 'indent-region)
