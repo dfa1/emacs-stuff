@@ -28,9 +28,9 @@ init files."
 (provide 'splitted-init)
 
 ;; unit tests
-(eval-when-compile 
-  (require 'assert)
-  (assert (init-file-p "00-test.el"))
-  (assert (init-file-p "/path/00-test.el"))
-  (assert-nil (init-file-p "a.el"))
-  (assert-nil (init-file-p "#a.el#")))
+;; (eval-when-compile 
+;;   (require 'assert)
+;;   (assert (init-file-p "00-test.el"))
+;;   (assert (init-file-p "/path/00-test.el"))
+;;   (assert-nil (init-file-p "a.el"))
+;;   (assert-nil (init-file-p "#a.el#")))
