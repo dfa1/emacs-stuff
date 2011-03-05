@@ -1,9 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; nopaste.pl interface TODO: currently this is broken
+;; nopaste.pl interface 
 ;; (see also my nopaste.pl script)
 ;;
+;; TODO: broken stuff
+;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 16:58:47 dfa>
+;; Time-stamp: <2011-03-05 22:01:53 dfa>
 
 (defun nopaste-region-to-file (start end)
   "Save current region in a temporarily file and return the
