@@ -27,7 +27,6 @@ ms-windows.el  - windows specific customizations
 gnu-linux.el   - ubuntu specific customizations  
 
 
-
 desiderata
 ==========
 
@@ -44,6 +43,8 @@ desiderata
 done
 ====
 
+- rpm-spec-mode
+- graphviz-mode
 - implemented discovery of .el files
 - provide/require for splitted-init.el
 - use C-space to complete symbol (as in netbeans)
