@@ -5,27 +5,6 @@ Since my .emacs is quite big (about 1k lines), and since I use GNU
 Emacs both Windows and GNU Linux distros, the need of a better separation 
 of concerns arose. 
 
-TODO: to be updated
-
-basic.el       - basic editing commands
-editing.el     - custom editing functions
-flyspell.el    - flyspell stuff
-smart-tab.el   - my smart-tab
-elisp.el       - emacs lisp mode
-clojure.el     - clojure mode + slime
-c.el           
-perl.el        
-python.el
-html.el
-latex.el       - LaTeX stuff
-hg.el          - mercurial stuff
-erc.el         - ERC configuration
-gui.el         - windows stuff
-keymap.el      - global keybindings
-
-ms-windows.el  - windows specific customizations 
-gnu-linux.el   - ubuntu specific customizations  
-
 
 Sample configuration
 ====================
