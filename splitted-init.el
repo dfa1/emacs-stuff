@@ -2,7 +2,7 @@
 ;; rc.d like, init loader for GNU Emacs.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-30 13:26:21 dfa>
+;; Time-stamp: <2011-04-28 14:12:34 dangelocola>
 
 ;; TODO: this file should be copied in site-lisp
 ;; TODO: add sample configuration
@@ -27,10 +27,3 @@ init files."
 
 (provide 'splitted-init)
 
-;; unit tests
-;; (eval-when-compile 
-;;   (require 'assert)
-;;   (assert (init-file-p "00-test.el"))
-;;   (assert (init-file-p "/path/00-test.el"))
-;;   (assert-nil (init-file-p "a.el"))
-;;   (assert-nil (init-file-p "#a.el#")))
