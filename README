@@ -27,9 +27,22 @@ ms-windows.el  - windows specific customizations
 gnu-linux.el   - ubuntu specific customizations  
 
 
+Sample configuration
+====================
+
+$ hg clone https://bitbucket.org/dfa/emacs-stuff splitted-init
+then add to your  ~/.emacs the following setup:
+
+(setq splitted-init-dir "~/splitted-init")
+(setq load-path (cons splitted-init-dir load-path))
+(load-library "splitted-init") 
+(load-splitted-init splitted-init-dir)
+
+
 desiderata
 ==========
 
+- a cool project name 
 - use add-to-list in auto-insert-alist
 - C-M-q should be mapped to M-S-f (as in netbeans)
 - F4 open/returns to ERC
