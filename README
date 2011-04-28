@@ -5,32 +5,23 @@ Since my .emacs is quite big (about 1k lines), and since I use GNU
 Emacs both Windows and GNU Linux distros, the need of a better separation 
 of concerns arose. 
 
-TODO: to be updated
 
-basic.el       - basic editing commands
-editing.el     - custom editing functions
-flyspell.el    - flyspell stuff
-smart-tab.el   - my smart-tab
-elisp.el       - emacs lisp mode
-clojure.el     - clojure mode + slime
-c.el           
-perl.el        
-python.el
-html.el
-latex.el       - LaTeX stuff
-hg.el          - mercurial stuff
-erc.el         - ERC configuration
-gui.el         - windows stuff
-keymap.el      - global keybindings
+Sample configuration
+====================
 
-ms-windows.el  - windows specific customizations 
-gnu-linux.el   - ubuntu specific customizations  
+$ hg clone https://bitbucket.org/dfa/emacs-stuff splitted-init
+then add to your  ~/.emacs the following setup:
 
+(setq splitted-init-dir "~/splitted-init")
+(setq load-path (cons splitted-init-dir load-path))
+(load-library "splitted-init") 
+(load-splitted-init splitted-init-dir)
 
 
 desiderata
 ==========
 
+- a cool project name 
 - use add-to-list in auto-insert-alist
 - C-M-q should be mapped to M-S-f (as in netbeans)
 - F4 open/returns to ERC
@@ -44,6 +35,8 @@ desiderata
 done
 ====
 
+- rpm-spec-mode
+- graphviz-mode
 - implemented discovery of .el files
 - provide/require for splitted-init.el
 - use C-space to complete symbol (as in netbeans)
