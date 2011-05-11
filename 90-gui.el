@@ -2,7 +2,7 @@
 ;; X window stuff
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 17:06:51 dfa>
+;; Time-stamp: <2011-05-11 10:26:01 dangelocola>
 
 (when window-system
   ;; display various non-editing buffers in their own frames
@@ -23,7 +23,7 @@
   ;; customizing frame look
   (add-to-list 'default-frame-alist '(cursor-color . "white"))
   (add-to-list 'default-frame-alist '(foreground-color . "white"))
-  (add-to-list 'default-frame-alist '(background-color . "MidnightBlue"))
+  (add-to-list 'default-frame-alist '(background-color . "black"))
 
   ;; disabling the toolbar and the scrollbar
   (tool-bar-mode -1)
