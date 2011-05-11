@@ -1,3 +1,9 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; python-mode configuration (https://launchpad.net/python-mode)
+;;
+;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
+;; Time-stamp: <2011-05-11 10:20:23 dangelocola>
+
 (load-library "python-mode")
 ;; (load-library "pycomplete") ;; requires pymacs
 (setq auto-mode-alist 
