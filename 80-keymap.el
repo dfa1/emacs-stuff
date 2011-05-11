@@ -2,7 +2,7 @@
 ;; My Keybindings
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-02-22 09:45:36 dangelocola>
+;; Time-stamp: <2011-05-11 15:57:26 dangelocola>
 
 (global-set-key [C-tab] 'next-buffer)
 (global-set-key [C-S-tab] 'previous-buffer)
@@ -34,8 +34,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; mapping function keys
 
+(defun bash()
+  (interactive)
+  (if (get-buffer "*BASH*") 
+      (switch-to-buffer "*BASH*")
+  (ansi-term "/bin/bash" "BASH")))
+
 (global-set-key [f1] 'info)
-(global-set-key [f2] 'eshell)
+(global-set-key [f2] 'bash)
 (global-set-key [f3] 'force-swith-to-slime)
 (global-set-key [f4] 'erc-maybe)
 (global-set-key [f5] 'insert-date)
