@@ -2,9 +2,12 @@
 ;; X window stuff
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-05-11 10:26:01 dangelocola>
+;; Time-stamp: <2011-05-16 17:56:11 dfa>
 
 (when window-system
+  ;; display line numbers in margin (fringe)
+  (global-linum-mode 1)
+
   ;; display various non-editing buffers in their own frames
   (setq special-display-buffer-names
 	(nconc '("*Backtrace*"
