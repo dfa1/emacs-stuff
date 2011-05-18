@@ -2,10 +2,10 @@
 ;; X window stuff
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-05-16 17:56:11 dfa>
+;; Time-stamp: <2011-05-17 14:19:10 dfa>
 
 (when window-system
-  ;; display line numbers in margin (fringe)
+  ;; display line numbers in margin 
   (global-linum-mode 1)
 
   ;; display various non-editing buffers in their own frames
@@ -24,9 +24,9 @@
   (add-to-list 'special-display-frame-alist '(unsplittable . t))
 
   ;; customizing frame look
-  (add-to-list 'default-frame-alist '(cursor-color . "white"))
-  (add-to-list 'default-frame-alist '(foreground-color . "white"))
-  (add-to-list 'default-frame-alist '(background-color . "black"))
+  (add-to-list 'default-frame-alist '(cursor-color . "black"))
+  (add-to-list 'default-frame-alist '(foreground-color . "black"))
+  (add-to-list 'default-frame-alist '(background-color . "white"))
 
   ;; disabling the toolbar and the scrollbar
   (tool-bar-mode -1)
