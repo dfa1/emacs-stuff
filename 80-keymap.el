@@ -2,7 +2,7 @@
 ;; My Keybindings
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-05-11 15:57:26 dangelocola>
+;; Time-stamp: <2011-05-19 10:12:17 dfa>
 
 (global-set-key [C-tab] 'next-buffer)
 (global-set-key [C-S-tab] 'previous-buffer)
@@ -62,15 +62,16 @@
 (global-set-key "\M-0" 'increment-number-at-point)
 (global-set-key "\M-9" 'decrement-number-at-point)
 
-;; TODO: create a function
+;; netbeans-like keybindings
 (global-set-key [C-S-down]
 		'(lambda () 
 		   (interactive)
 		   (if (region-active-p)
 		       (clone-region)
 		     (clone-line-below))))
-;; TODO: create a function
-(global-set-key [C-S-up] '(lambda () 
+
+(global-set-key [C-S-up] 
+		'(lambda () 
 		   (interactive)
 		   (if (region-active-p)
 		       (clone-region)
