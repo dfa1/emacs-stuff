@@ -2,7 +2,7 @@
 ;; X window stuff
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-05-17 14:19:10 dfa>
+;; Time-stamp: <2011-05-26 10:00:31 dfa>
 
 (when window-system
   ;; display line numbers in margin 
@@ -24,9 +24,9 @@
   (add-to-list 'special-display-frame-alist '(unsplittable . t))
 
   ;; customizing frame look
-  (add-to-list 'default-frame-alist '(cursor-color . "black"))
-  (add-to-list 'default-frame-alist '(foreground-color . "black"))
-  (add-to-list 'default-frame-alist '(background-color . "white"))
+  (add-to-list 'default-frame-alist '(cursor-color . "white"))
+  (add-to-list 'default-frame-alist '(foreground-color . "white"))
+  (add-to-list 'default-frame-alist '(background-color . "black"))
 
   ;; disabling the toolbar and the scrollbar
   (tool-bar-mode -1)
