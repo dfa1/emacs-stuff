@@ -1,27 +1,27 @@
-Splitted configuration
-======================
+Split init for GNU Emacs
+========================
 
-Since my .emacs is quite big (about 1k lines), and since I use GNU
-Emacs both Windows and GNU Linux distros, the need of a better separation 
-of concerns arose. 
+Since my .emacs is quite big, and since I use GNU Emacs both Windows
+and GNU/Linux, the need of a better separation of concerns arose.
 
 
 Sample configuration
 ====================
 
-$ hg clone https://bitbucket.org/dfa/emacs-stuff splitted-init
+$ hg clone https://bitbucket.org/dfa/emacs-stuff split-init
+
 then add to your  ~/.emacs the following setup:
 
-(setq splitted-init-dir "~/splitted-init")
-(setq load-path (cons splitted-init-dir load-path))
-(load-library "splitted-init") 
-(load-splitted-init splitted-init-dir)
+(setq split-init-dir "~/split-init")
+(setq load-path (cons split-init-dir load-path))
+(load-library "split-init") 
+(load-split-init split-init-dir)
 
 
-desiderata
+Desiderata
 ==========
 
-- a cool project name 
+- a cool project name (split-init isn't really cool) 
 - use add-to-list in auto-insert-alist
 - C-M-q should be mapped to M-S-f (as in netbeans)
 - F4 open/returns to ERC
