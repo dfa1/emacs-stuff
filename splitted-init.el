@@ -2,10 +2,8 @@
 ;; rc.d like, init loader for GNU Emacs.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-04-28 14:12:34 dangelocola>
+;; Time-stamp: <2011-06-20 08:17:21 dfa>
 
-;; TODO: this file should be copied in site-lisp
-;; TODO: add sample configuration
 (defun load-splitted-init (path) 
   "Load (via `load-file') an ordered set of files in way similar to rc.d
 init files."
