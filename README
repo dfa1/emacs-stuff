@@ -21,7 +21,7 @@ then add to your  ~/.emacs the following setup:
 Desiderata
 ==========
 
-- a cool project name (split-init isn't really cool) 
+- improve python mode
 - use add-to-list in auto-insert-alist
 - C-M-q should be mapped to M-S-f (as in netbeans)
 - F4 open/returns to ERC
