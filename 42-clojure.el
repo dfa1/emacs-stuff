@@ -2,10 +2,10 @@
 ;; clojure mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-07 23:12:13 dfa>
+;; Time-stamp: <2011-09-07 23:18:32 dfa>
 
 (require 'clojure-mode)
-; TODO: (require 'clojure-test-mode)		
+(require 'clojure-test-mode)		
 
 ;; enable flyspell-prog-mode
 (add-hook 'clojure-mode-hook 'flyspell-prog-mode)
