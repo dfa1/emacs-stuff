@@ -2,7 +2,7 @@
 ;; clojure mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-07 23:18:32 dfa>
+;; Time-stamp: <2011-09-08 00:25:03 dfa>
 
 (require 'clojure-mode)
 (require 'clojure-test-mode)		
@@ -18,3 +18,7 @@
 	      (smart-tab 'slime-complete-symbol))
 	    (local-set-key (kbd "<tab>") 'complete-clojure)))
 
+;; enabling test mode
+(add-hook 'clojure-mode-hook
+ (lambda ()
+   (clojure-test-mode 1)))
