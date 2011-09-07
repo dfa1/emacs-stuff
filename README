@@ -18,16 +18,15 @@ then add to your  ~/.emacs the following setup:
 (load-split-init split-init-dir)
 
 
-Desiderata
-==========
+todo
+====
 
+- ship as separate library
 - improve python mode
 - use add-to-list in auto-insert-alist
 - C-M-q should be mapped to M-S-f (as in netbeans)
 - F4 open/returns to ERC
 - call (use 'clojure.contrib.repl-utils) with repl-hook
-- clojure mode config: http://wiki.unto.net/setting-up-clojure-and-slime
-- clojure mode on windows depends on clojure box
 - secure-string-match first arg cannot be nil
 - (add-hook 'before-save-hook 'copyright-update)
 
