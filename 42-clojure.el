@@ -2,7 +2,7 @@
 ;; clojure mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-08 00:25:03 dfa>
+;; Time-stamp: <2011-09-08 00:40:40 dfa>
 
 (require 'clojure-mode)
 (require 'clojure-test-mode)		
@@ -20,5 +20,5 @@
 
 ;; enabling test mode
 (add-hook 'clojure-mode-hook
- (lambda ()
-   (clojure-test-mode 1)))
+	  (lambda ()
+	    (clojure-test-mode 1)))
