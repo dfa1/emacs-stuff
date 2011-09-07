@@ -2,7 +2,7 @@
 ;; clojure mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-07 23:11:23 dfa>
+;; Time-stamp: <2011-09-07 23:12:13 dfa>
 
 (require 'clojure-mode)
 ; TODO: (require 'clojure-test-mode)		
@@ -18,15 +18,3 @@
 	      (smart-tab 'slime-complete-symbol))
 	    (local-set-key (kbd "<tab>") 'complete-clojure)))
 
-; slime-repl customisation
-;; (add-hook 'slime-repl-hook
-;;  (lambda ()
-;;    (slime-repl-eval-string "(set! *print-length*  swank-clojure 1.3.110)")
-;;    (slime-repl-eval-string "(use 'clojure.contrib.repl-utils)")))
-
-;; slime (mapped to F3)
-;; (defun force-swith-to-slime() 
-;;   (interactive)
-;;   (if (slime-connected-p)
-;;     (slime-switch-to-output-buffer)
-;;     (slime)))
