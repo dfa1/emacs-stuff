@@ -2,22 +2,21 @@
 ;; clojure mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-08-20 12:53:13 dfa>
+;; Time-stamp: <2011-09-07 22:49:49 dfa>
 
 (require 'clojure-mode)
-;; (require 'clojure-test-mode)
-
-(add-hook 'clojure-mode-hook
-	  (lambda ()
-	    ;; custom keybindings
-	    (defun complete-clojure () 
-	      (interactive)
-	      (smart-tab 'slime-complete-symbol))
-
-	    (local-set-key (kbd "<tab>") 'complete-clojure)))
+; TODO: (require 'clojure-test-mode)		
 
 ;; enable flyspell-prog-mode
 (add-hook 'clojure-mode-hook 'flyspell-prog-mode)
+
+;; enabling tab completion
+(add-hook 'clojure-mode-hook
+	  (lambda ()
+	    (defun complete-clojure () 
+	      (interactive)
+	      (smart-tab 'slime-complete-symbol))
+	    (local-set-key (kbd "<tab>") 'complete-clojure)))))
 
 ; slime-repl customisation
 ;; (add-hook 'slime-repl-hook
