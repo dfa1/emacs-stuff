@@ -2,7 +2,7 @@
 ;; clojure mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-07 22:49:49 dfa>
+;; Time-stamp: <2011-09-07 23:11:23 dfa>
 
 (require 'clojure-mode)
 ; TODO: (require 'clojure-test-mode)		
@@ -16,7 +16,7 @@
 	    (defun complete-clojure () 
 	      (interactive)
 	      (smart-tab 'slime-complete-symbol))
-	    (local-set-key (kbd "<tab>") 'complete-clojure)))))
+	    (local-set-key (kbd "<tab>") 'complete-clojure)))
 
 ; slime-repl customisation
 ;; (add-hook 'slime-repl-hook
