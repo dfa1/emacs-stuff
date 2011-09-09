@@ -2,7 +2,7 @@
 ;; Basic editing environment.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 02:28:29 dfa>
+;; Time-stamp: <2011-09-10 00:22:57 dfa>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Variables
@@ -11,6 +11,7 @@
 (setq inhibit-startup-message t)
 
 ;; setting username, email address and other stuff
+(setq user-login-name "dfa")
 (setq user-full-name "Davide Angelocola")
 (setq user-mail-address "davide.angelocola@gmail.com")
 (setq current-language-environment "English")
