@@ -2,11 +2,10 @@
 ;; text-mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 16:59:22 dfa>
+;; Time-stamp: <2011-09-10 00:57:49 dfa>
 
-(add-hook 'text-mode-hook
-	  '(lambda ()
-	     (auto-fill-mode 1)))
+;; enabling autofill mode
+(add-hook 'text-mode-hook 'auto-fill-mode)
 
 ;; enter text-mode when opening a file named 'README', 'INSTALL' and so on
 (add-to-list 'auto-mode-alist '("README" . text-mode))
