@@ -2,7 +2,7 @@
 ;; Custom commands.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 16:53:16 dfa>
+;; Time-stamp: <2011-09-10 00:53:27 dfa>
 
 (defun kill-other-buffers ()
   "Kill all other buffers."
@@ -46,6 +46,21 @@
     (kill-ring-save (region-beginning) (region-end))
     (yank)
     (goto-char start)))
+
+;; netbeans-like keybindings
+(global-set-key [C-S-down]
+		'(lambda () 
+		   (interactive)
+		   (if (region-active-p)
+		       (clone-region)
+		     (clone-line-below))))
+
+(global-set-key [C-S-up] 
+		'(lambda () 
+		   (interactive)
+		   (if (region-active-p)
+		       (clone-region)
+		     (clone-line-above))))
 
 ;; other special commands
 (defun insert-shell-command-output (command)

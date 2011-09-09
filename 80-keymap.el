@@ -2,7 +2,7 @@
 ;; My Keybindings
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-10 00:41:48 dfa>
+;; Time-stamp: <2011-09-10 00:53:16 dfa>
 
 (global-set-key [C-tab] 'next-buffer)
 
@@ -54,21 +54,6 @@
 (global-set-key "\M-7" 'column-ruler)
 (global-set-key "\M-0" 'increment-number-at-point)
 (global-set-key "\M-9" 'decrement-number-at-point)
-
-;; netbeans-like keybindings
-(global-set-key [C-S-down]
-		'(lambda () 
-		   (interactive)
-		   (if (region-active-p)
-		       (clone-region)
-		     (clone-line-below))))
-
-(global-set-key [C-S-up] 
-		'(lambda () 
-		   (interactive)
-		   (if (region-active-p)
-		       (clone-region)
-		     (clone-line-above))))
 
 ;; defined in 20.hg.el
 (global-set-key "\C-xvp" 'mercurial-push-cwd)
