@@ -2,10 +2,9 @@
 ;; My Keybindings
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-10 00:15:32 dfa>
+;; Time-stamp: <2011-09-10 00:18:24 dfa>
 
 (global-set-key [C-tab] 'next-buffer)
-(global-set-key [C-S-tab] 'previous-buffer)
 
 (global-set-key [M-f4] 'save-buffers-kill-emacs)
 (global-set-key "\C-f" 'isearch-forward)
