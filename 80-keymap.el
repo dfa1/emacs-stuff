@@ -2,7 +2,7 @@
 ;; My Keybindings
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-10 00:18:24 dfa>
+;; Time-stamp: <2011-09-10 00:41:48 dfa>
 
 (global-set-key [C-tab] 'next-buffer)
 
@@ -33,14 +33,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; mapping function keys
 
-(defun bash()
-  (interactive)
-  (if (get-buffer "*BASH*") 
-      (switch-to-buffer "*BASH*")
-  (ansi-term "/bin/bash" "BASH")))
-
 (global-set-key [f1] 'info)
-(global-set-key [f2] 'bash)
+(global-set-key [f2] 'bash-maybe)  ;; defined in 22-bash.el
 (global-set-key [f3] 'slime-maybe) ;; defined in 42-clojure.el
 (global-set-key [f4] 'erc-maybe)
 (global-set-key [f5] 'insert-date)
