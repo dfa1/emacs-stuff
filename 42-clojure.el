@@ -2,7 +2,7 @@
 ;; clojure mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-08 00:40:40 dfa>
+;; Time-stamp: <2011-09-10 00:16:25 dfa>
 
 (require 'clojure-mode)
 (require 'clojure-test-mode)		
@@ -22,3 +22,11 @@
 (add-hook 'clojure-mode-hook
 	  (lambda ()
 	    (clojure-test-mode 1)))
+
+;; mapped to F3
+(defun slime-maybe()
+  "Provide the SLIME interactive REPL."
+  (interactive)
+  (if (get-buffer "*slime-repl nil*") 
+      (switch-to-buffer "*slime-repl nil*") 
+    (clojure-jack-in)))

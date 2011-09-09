@@ -2,7 +2,7 @@
 ;; My Keybindings
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-05-19 10:12:17 dfa>
+;; Time-stamp: <2011-09-10 00:15:32 dfa>
 
 (global-set-key [C-tab] 'next-buffer)
 (global-set-key [C-S-tab] 'previous-buffer)
@@ -42,7 +42,7 @@
 
 (global-set-key [f1] 'info)
 (global-set-key [f2] 'bash)
-(global-set-key [f3] 'force-swith-to-slime)
+(global-set-key [f3] 'slime-maybe) ;; defined in 42-clojure.el
 (global-set-key [f4] 'erc-maybe)
 (global-set-key [f5] 'insert-date)
 (global-set-key [f6] 'insert-time)
