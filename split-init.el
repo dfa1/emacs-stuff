@@ -2,7 +2,7 @@
 ;; rc.d like, init loader for GNU Emacs.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-10 23:49:17 dfa>
+;; Time-stamp: <2011-09-10 23:55:13 dfa>
 
 (defun load-split-init (path) 
   "Load (via `load-file') an ordered set of files in way similar
@@ -15,6 +15,12 @@
   (delq nil
 	(mapcar (lambda (x) 
 		  (if (funcall condp x) x)) lst)))
+
+(eval-when-compile 
+  (assert (equal '(0) (filter 'zerop '(0 1))))
+  (assert (equal '() (filter 'zerop '(1 1))))
+  (assert (equal '(0) (filter 'zerop '(0))))
+)
 
 (defun init-file-p (path)
   "Returns nil if the path is an elisp file starting two-digits."
