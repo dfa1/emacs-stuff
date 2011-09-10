@@ -2,7 +2,7 @@
 ;; X window stuff
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-05-26 10:00:31 dfa>
+;; Time-stamp: <2011-09-11 00:42:49 dfa>
 
 (when window-system
   ;; display line numbers in margin 
@@ -32,10 +32,8 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
 
-  ;; enabling my wheeled trackball
-  (mouse-wheel-mode 1)
-
   ;; setting a decent wheel behavior
+  (mouse-wheel-mode 1)
   (setq mouse-progressive-speed nil)
   (setq mouse-wheel-progressive-speed nil)
   (setq scroll-step 1)
