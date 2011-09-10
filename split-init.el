@@ -2,7 +2,7 @@
 ;; rc.d like, init loader for GNU Emacs.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-10 23:55:13 dfa>
+;; Time-stamp: <2011-09-11 00:29:59 dfa>
 
 (defun load-split-init (path) 
   "Load (via `load-file') an ordered set of files in way similar
@@ -17,8 +17,8 @@
 		  (if (funcall condp x) x)) lst)))
 
 (eval-when-compile 
+  (require 'cl)
   (assert (equal '(0) (filter 'zerop '(0 1))))
-  (assert (equal '() (filter 'zerop '(1 1))))
   (assert (equal '(0) (filter 'zerop '(0))))
 )
 
@@ -27,6 +27,7 @@
   (eq (string-match-p "^[0-9][0-9]-.+\.el$" (file-name-nondirectory path)) 0))
 
 (eval-when-compile 
+  (require 'cl)
   (defmacro accept (value) 
     `(assert ,value)) 
   (defmacro refuse (value)
