@@ -12,10 +12,10 @@ $ hg clone https://bitbucket.org/dfa/emacs-stuff split-init
 
 then add to your  ~/.emacs the following setup:
 
-(setq split-init-dir "~/split-init")
-(setq load-path (cons split-init-dir load-path))
-(load-library "split-init") 
-(load-split-init split-init-dir)
+  (require 'split-init) 
+  (load-split-init "~/.emacs.d/")
+
+files such as 01-foo.el, 99-bar.el will be automatically loaded.
 
 
 todo
