@@ -2,7 +2,7 @@
 ;; text-mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-29 21:27:54 dfa>
+;; Time-stamp: <2011-09-10 23:04:08 dfa>
 
 ;; enable flyspell-prog-mode
 (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
@@ -57,15 +57,3 @@
 
 	    ;; end
 	    (setq skeleton-end-hook nil)))
-
-;; TODO: compile on save .el files
-;;
-;; (require 'bytecomp)
-;;
-;; (defun compile-buffer ()
-;;   "Compile the current buffer."
-;;   (interactive)
-;;   (when (init-file-p (buffer-file-name))
-;;     (byte-compile-file (buffer-file-name))))
-;;
-;; (add-hook 'after-save-hook 'compile-buffer)
