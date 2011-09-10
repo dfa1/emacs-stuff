@@ -2,7 +2,7 @@
 ;; Custom commands.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-10 00:53:27 dfa>
+;; Time-stamp: <2011-09-10 23:36:52 dfa>
 
 (defun kill-other-buffers ()
   "Kill all other buffers."
@@ -231,9 +231,15 @@ USA.
   (toggle-read-only 1))
 
 ;; helpers (non interactive)
-(defmacro join (join-char &rest others)
-  "join as in perl"
-  `(mapconcat 'identity ',others ,join-char))
+(defun join (join-char &rest others)
+  "`join' as in perl"
+  (mapconcat 'identity 'others join-char))
+
+(eval-when-compile 
+  (require 'cl)
+  (assert (string-equal "a" (join "|" "a")))
+  (assert (string-equal "a|b" (join "|" "a" "b")))
+)
 
 (defun string-repeat (str times)
   "As the x operator in perl"
