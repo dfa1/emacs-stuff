@@ -2,7 +2,7 @@
 ;; Custom commands.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-10 23:36:52 dfa>
+;; Time-stamp: <2011-09-11 00:31:18 dfa>
 
 (defun kill-other-buffers ()
   "Kill all other buffers."
@@ -233,7 +233,7 @@ USA.
 ;; helpers (non interactive)
 (defun join (join-char &rest others)
   "`join' as in perl"
-  (mapconcat 'identity 'others join-char))
+  (mapconcat 'identity others join-char))
 
 (eval-when-compile 
   (require 'cl)
