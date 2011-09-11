@@ -1,7 +1,22 @@
 My .emacs
 =========
 
-This is my .emacs.
+My configurations for GNU Emacs. It uses emacs-split-init, available
+at http://bitbucket.org/dfa/emacs-split-init
+
+Sample setup
+------------
+
+$ mkdir -p ~/.emacs.d
+$ hg clone http://bitbucket.org/dfa/emacs-split-init
+$ hg clone http://bitbucket.org/dfa/emacs-stuff
+$ cat >> ~/.emacs << END
+  (add-to-list 'load-path "~/.emacs.d/emacs-split-init")
+  (add-to-list 'load-path "~/.emacs.d/emacs-stuff/modes")
+  (setq split-init-dir "~/.emacs.d/emacs-stuff")
+  (require 'split-init)
+  (load-split-init split-init-dir)
+END
 
 todo
 ----
