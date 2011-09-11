@@ -2,7 +2,7 @@
 ;; clojure mode
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-10 00:16:25 dfa>
+;; Time-stamp: <2011-09-11 12:26:09 dfa>
 
 (require 'clojure-mode)
 (require 'clojure-test-mode)		
@@ -30,3 +30,13 @@
   (if (get-buffer "*slime-repl nil*") 
       (switch-to-buffer "*slime-repl nil*") 
     (clojure-jack-in)))
+
+;; skeletons.. OMG!
+(add-hook 'clojure-mode-hook
+	  (lambda ()
+	    (define-skeleton clojure-skeleton-deftest
+	      "Insert a deftest" nil
+	      > "(deftest " _ ""\n
+	      "(is false))")
+	    (local-set-key "\C-cit" 'clojure-skeleton-deftest)
+	    (setq skeleton-end-hook nil)))
