@@ -1,37 +1,21 @@
-Split init for GNU Emacs
-========================
+My .emacs
+=========
 
-Since my .emacs is quite big, and since I use GNU Emacs both Windows
-and GNU/Linux, the need of a better separation of concerns arose.
-
-
-Sample configuration
-====================
-
-$ hg clone https://bitbucket.org/dfa/emacs-stuff split-init
-
-then add to your  ~/.emacs the following setup:
-
-  (require 'split-init) 
-  (load-split-init "~/.emacs.d/")
-
-files such as 01-foo.el, 99-bar.el will be automatically loaded.
-
+This is my .emacs.
 
 todo
-====
+----
 
-- ship as separate library
+- configuration by feature 
 - improve python mode
 - use add-to-list in auto-insert-alist
 - C-M-q should be mapped to M-S-f (as in netbeans)
 - F4 open/returns to ERC
-- secure-string-match first arg cannot be nil
 - (add-hook 'before-save-hook 'copyright-update)
 
 
 done
-====
+----
 
 - clojure setup vastly improved
 - rpm-spec-mode
