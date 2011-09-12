@@ -2,17 +2,27 @@
 ;; mercurial configuration 
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-13 00:23:08 dfa>
+;; Time-stamp: <2011-09-13 00:52:16 dfa>
 
 ;; automatically follow symlinks
 (setq vc-follow-symlinks t)
 
-(defun mercurial-push-cwd () 		; TODO: write a generic function
-  "Do a mercurial push of the current repository."
-  (interactive)
-  (with-output-to-temp-buffer "*hg push*"
-    (vc-do-command "*hg push*" `async' "hg" nil "push")))
-
 ;; use conf-mode for hg config files 
 (add-to-list 'auto-mode-alist '("hgrc" . conf-mode))
 (add-to-list 'auto-mode-alist '(".hgrc" . conf-mode))
+
+;; push log
+(defconst hg-log-buffer "*hg log*"
+  "The name of hg log buffer ")
+
+(defun hg-when-push-finish (process event)
+  (if (equal event "finished\n")
+      (message "push completed; see the buffer `%s'" hg-log-buffer)))
+
+(defun mercurial-push-cwd () 		; TODO: write a generic function
+  "Do a mercurial push of the current repository."
+  (interactive)
+  (generate-new-buffer hg-log-buffer)
+  (set-process-sentinel 
+   (vc-do-command hg-log-buffer `async' "hg" nil "push") 'hg-when-push-finish))
+
