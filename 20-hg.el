@@ -2,7 +2,7 @@
 ;; mercurial configuration 
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-13 00:52:16 dfa>
+;; Time-stamp: <2011-09-13 00:54:49 dfa>
 
 ;; automatically follow symlinks
 (setq vc-follow-symlinks t)
@@ -22,6 +22,7 @@
 (defun mercurial-push-cwd () 		; TODO: write a generic function
   "Do a mercurial push of the current repository."
   (interactive)
+  (message "pushing...")
   (generate-new-buffer hg-log-buffer)
   (set-process-sentinel 
    (vc-do-command hg-log-buffer `async' "hg" nil "push") 'hg-when-push-finish))
