@@ -2,15 +2,15 @@
 ;; Re-indent whole buffer, mapped as in netbeans (alt-shift-f). 
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-12 23:51:04 dfa>
+;; Time-stamp: <2011-09-13 00:05:55 dfa>
 ;;
 
-(defun reindent-whole-buffer (start end)
+(defun reindent-whole-buffer ()
   "Re-indent the whole buffer."
-  (interactive "r")
+  (interactive)
   (save-excursion 
-    (mark-whole-buffer)
-    (indent-region start end)))
+    (with-temp-message "Indenting..."
+      (indent-region (point-min) (point-max)))))
 
 ;; disable forward-word (I prefer C-<left>)
 (global-unset-key "\M-F")
