@@ -1,11 +1,8 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My key bindings
 ;;
 ;; Since my primary IDE is Netbeans these bindings will try minic it
 ;; as much as possible.
-;;
-;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-13 19:56:55 dfa>
 
 ;; misc commands, try to be 
 (global-set-key [M-f4] 'save-buffers-kill-emacs)

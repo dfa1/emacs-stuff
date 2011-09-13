@@ -1,9 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Smart completion. 
 ;;
-;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-13 19:49:46 dfa>
-;;
 ;; parametric completion: a modified of smart completion version 
 ;;   based on http://www.emacswiki.org/emacs/TabCompletion
 ;;   this is NOT http://github.com/haxney/smart-tab/blob/master/smart-tab.el

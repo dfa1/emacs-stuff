@@ -22,13 +22,11 @@ END
 todo
 ----
 
-- configuration by feature 
+- configuration by feature (split autofile templates)
 - improve python mode
-- use add-to-list in auto-insert-alist
 - (add-hook 'before-save-hook 'copyright-update)
 - C-q as in netbeans (goto-last-edit)
 - http://www.emacswiki.org/emacs/MidnightMode
-- remove timestamps 
 - tounix of all files
   
 

@@ -1,8 +1,5 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Basic ERC customizations
-;;
-;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-01-16 17:36:03 dfa>
    
 (defun erc-maybe ()
   "Connect to IRC."
@@ -32,7 +29,6 @@
              (require 'erc-pcomplete)
              (pcomplete-erc-setup)
              (erc-completion-mode 1)))
-
 
 ;; autojoin
 (erc-autojoin-mode 1)

@@ -1,8 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elisp-mode
-;;
-;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-12 23:49:11 dfa>
 
 ;; enable flyspell-prog-mode
 (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)

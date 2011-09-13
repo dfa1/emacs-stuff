@@ -1,8 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; mercurial configuration 
-;;
-;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-13 00:54:49 dfa>
+;; mercurial 
 
 ;; automatically follow symlinks
 (setq vc-follow-symlinks t)
