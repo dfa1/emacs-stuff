@@ -2,7 +2,7 @@
 ;; Smart completion. 
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2010-12-24 13:53:05 dfa>
+;; Time-stamp: <2011-09-13 18:14:59 dfa>
 ;;
 ;; parametric completion: a modified of smart completion version 
 ;;   based on http://www.emacswiki.org/emacs/TabCompletion
@@ -19,5 +19,3 @@
       (if (looking-at "\\>")
 	  (funcall completion-hook)
 	(indent-for-tab-command))))
-
-
