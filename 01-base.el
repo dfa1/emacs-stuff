@@ -159,3 +159,10 @@
 ;; midnight
 (require 'midnight) 
 (midnight-delay-set 'midnight-delay "4:30am")
+
+;; flyspell
+(require 'flyspell)
+
+;; sort corrections
+(setq flyspell-sort-corrections t)
+
