@@ -77,9 +77,6 @@
 ;; do a "chmod u+x" when you save a script file (starting with "#!")
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
-;; update timestamp
-(add-hook 'before-save-hook 'time-stamp)
-
 ;; don't echo passwords when communicating with interactive programs
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 
