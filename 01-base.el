@@ -155,3 +155,7 @@
 ;; basic setup for uniquify
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
+
+;; midnight
+(require 'midnight) 
+(midnight-delay-set 'midnight-delay "4:30am")

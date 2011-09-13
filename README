@@ -26,7 +26,6 @@ todo
 - improve python mode
 - (add-hook 'before-save-hook 'copyright-update)
 - C-q as in netbeans (goto-last-edit)
-- http://www.emacswiki.org/emacs/MidnightMode
 - tounix of all files
   
 
