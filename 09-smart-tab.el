@@ -16,3 +16,17 @@
       (if (looking-at "\\>")
 	  (funcall completion-hook)
 	(indent-for-tab-command))))
+
+;; other minor completion modes
+(partial-completion-mode 1)
+(icomplete-mode 1)
+(dynamic-completion-mode 1)
+
+;; set dynamic abbreviations to case rude
+(setq dabbrev-case-fold-search nil)
+(setq save-abbrevs nil)
+
+;; completion ignores filenames ending in any string in this list
+(setq completion-ignored-extensions
+      '(".o" ".lo" ".so" ".elc" ".class"))
+

@@ -28,10 +28,6 @@
 ;; _always_ require final newline
 (setq require-final-newline t)
 
-;; set dynamic abbreviations to case rude
-(setq dabbrev-case-fold-search nil)
-(setq save-abbrevs nil)
-
 ;; cursor follow compilation's output
 (setq compilation-scroll-output t)
 
@@ -69,10 +65,6 @@
 ;; sentences
 (setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
       sentence-end-double-space nil)
-
-;; completion ignores filenames ending in any string in this list
-(setq completion-ignored-extensions
-      '(".o" ".lo" ".so" ".elc" ".class"))
 
 ;; do a "chmod u+x" when you save a script file (starting with "#!")
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
@@ -122,7 +114,6 @@
 
 ;; other useful minor modes
 (show-paren-mode 1)
-(dynamic-completion-mode 1)
 (size-indication-mode 1)
 (blink-cursor-mode 1)
 
