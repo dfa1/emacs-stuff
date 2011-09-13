@@ -1,8 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My Keybindings
+;; My key bindings
+;;
+;; Since my primary IDE is Netbeans these bindings will try minic it
+;; as much as possible.
 ;;
 ;; Author    : Davide Angelocola <davide.angelocola@gmail.com>
-;; Time-stamp: <2011-09-10 00:53:16 dfa>
+;; Time-stamp: <2011-09-13 19:41:33 dfa>
 
 (global-set-key [C-tab] 'next-buffer)
 
@@ -24,11 +27,11 @@
 (global-set-key "\M-1" 'man)
 (global-set-key "\M-2" 'shell-command)
 (global-set-key "\M-@" 'insert-shell-command-output)
-(global-set-key "\M-3" 'indent-region)
+(global-set-key "\M-3" 'indent-region) ;; FIXME: use M-F
 (global-set-key "\M-4" 'locate)
 (global-set-key "\M-5" 'highlight-regexp)
 (global-set-key "\M-6" 'unhighlight-regexp)
-(global-set-key (kbd "C-SPC") 'dabbrev-expand)
+(global-set-key (kbd "C-SPC") 'dabbrev-expand) ;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; mapping function keys
@@ -36,7 +39,7 @@
 (global-set-key [f1] 'info)
 (global-set-key [f2] 'bash-maybe)  ;; defined in 22-bash.el
 (global-set-key [f3] 'slime-maybe) ;; defined in 42-clojure.el
-(global-set-key [f4] 'erc-maybe)
+(global-set-key [f4] 'erc-maybe)   
 (global-set-key [f5] 'insert-date)
 (global-set-key [f6] 'insert-time)
 (global-set-key [f7] 'insert-time-and-date)
@@ -58,3 +61,10 @@
 ;; defined in 20.hg.el
 (global-set-key "\C-xvp" 'mercurial-push-cwd)
 
+;; disable forward-word (I prefer C-<left>)
+(global-unset-key "\M-F")
+(global-unset-key "\M-f")
+(global-set-key "\M-F" 'indent-buffer)
+
+
+; LocalWords:  FIXME
