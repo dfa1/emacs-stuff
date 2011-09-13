@@ -18,16 +18,19 @@ $ cat >> ~/.emacs << END
   (load-split-init split-init-dir)
 END
 
+
 todo
 ----
 
 - configuration by feature 
 - improve python mode
 - use add-to-list in auto-insert-alist
-- C-M-q should be mapped to M-S-f (as in netbeans)
-- F4 open/returns to ERC
 - (add-hook 'before-save-hook 'copyright-update)
-
+- C-q as in netbeans (goto-last-edit)
+- http://www.emacswiki.org/emacs/MidnightMode
+- remove timestamps 
+- tounix of all files
+  
 
 done
 ----
