@@ -18,7 +18,6 @@
 	(indent-for-tab-command))))
 
 ;; other minor completion modes
-(partial-completion-mode 1)
 (icomplete-mode 1)
 (dynamic-completion-mode 1)
 
