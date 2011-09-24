@@ -12,7 +12,7 @@
 	    (defun complete-clojure () 
 	      (interactive)
 	      (smart-tab 'slime-complete-symbol))
-	    (local-set-key (kbd "<tab>") 'complete-clojure)))
+	    (local-set-key (kbd "C-<space>") 'complete-clojure)))
 
 ;; enabling test mode
 (add-hook 'clojure-mode-hook
