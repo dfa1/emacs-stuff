@@ -64,7 +64,7 @@
   (find-file 
    (format 
     "../../src/%s.clj" 
-    (parent-directory-name (file-name-sans-extension test-name))))
+    (parent-directory-name (file-name-sans-extension test-name)))))
 
 (defun my-clojure-switch-implementation-test ()
   (interactive)
