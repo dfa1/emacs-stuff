@@ -18,7 +18,6 @@
 	(indent-for-tab-command))))
 
 ;; other minor completion modes
-(icomplete-mode 1)
 (dynamic-completion-mode 1)
 
 ;; set dynamic abbreviations to case rude
