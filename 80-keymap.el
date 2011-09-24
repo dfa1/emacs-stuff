@@ -53,5 +53,3 @@
 (global-unset-key "\M-f")
 (global-set-key "\M-F" 'indent-buffer)
 
-
-; LocalWords:  FIXME
