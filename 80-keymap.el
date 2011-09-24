@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My key bindings
+;; Global key bindings
 ;;
 ;; Since my primary IDE is Netbeans these bindings will try minic it
 ;; as much as possible.
