@@ -15,7 +15,7 @@
 	    (defun complete-elisp () 
 	      (interactive)
 	      (smart-tab 'lisp-complete-symbol))
-	    (local-set-key (kbd "C-<space>") 'complete-elisp)))
+	    (local-set-key (kbd "C-SPC") 'complete-elisp)))
 
 ;; templates
 (add-hook 'emacs-lisp-mode-hook
