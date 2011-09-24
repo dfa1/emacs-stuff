@@ -1,5 +1,5 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; clojure mode
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; clojure mode
 (require 'clojure-mode)
 (require 'clojure-test-mode)		
 
@@ -26,6 +26,14 @@
   (if (get-buffer "*slime-repl nil*") 
       (switch-to-buffer "*slime-repl nil*") 
     (clojure-jack-in)))
+
+;; redefine local key bindings (as in netbeans)
+(add-hook 'clojure-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "<C-f6>") 'clojure-test-run-tests)
+	    (local-unset-key "\C-T")
+	    (local-unset-key "\C-t")
+	    (local-set-key "\C-T" 'clojure-test-jump-to-implementation)))
 
 ;; skeletons.. OMG!
 (add-hook 'clojure-mode-hook
