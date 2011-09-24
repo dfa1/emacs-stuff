@@ -19,7 +19,7 @@
 (global-set-key "\C-b" 'ibuffer)
 (global-set-key [C-tab] 'next-buffer)
 (global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
-(global-set-key (kbd "C-SPC") 'dabbrev-expand) ;; FIXME: this should autocomplete
+(global-set-key (kbd "<tab>") 'dabbrev-expand) 
 
 ;; quick commands
 (global-set-key "\M-1" 'man)

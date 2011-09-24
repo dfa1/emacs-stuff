@@ -7,9 +7,10 @@
 	    (setq-default TeX-master nil) 
 	    (setq TeX-parse-self t)
 	    (setq TeX-auto-save t)
-	    (setq ispell-parser 'tex) ;; suggested by flyspell.el documentation
+	    ;; suggested by flyspell.el documentation
+	    (setq ispell-parser 'tex) 
 	    
-	    ;; italian accents; I don't like the italian keyboard's layout
+	    ;; italian accents
 	    (define-skeleton latex-e-skeleton
 	      "Insert \`{e} " nil
 	      > "\\`{e}" _)
@@ -40,7 +41,7 @@
 	      (interactive)
 	      (smart-tab 'TeX-complete-symbol))
 
-	    (local-set-key (kbd "<tab>") 'complete-latex)))
+	    (local-set-key (kbd "C-<space>") 'complete-latex)))
 
 ;; enabling flyspell
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)

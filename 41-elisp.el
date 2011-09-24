@@ -15,9 +15,7 @@
 	    (defun complete-elisp () 
 	      (interactive)
 	      (smart-tab 'lisp-complete-symbol))
-	    
-	    ;; rebind lisp-complete-symbol to TAB
-	    (local-set-key (kbd "<tab>") 'complete-elisp)))
+	    (local-set-key (kbd "C-<space>") 'complete-elisp)))
 
 ;; templates
 (add-hook 'emacs-lisp-mode-hook
