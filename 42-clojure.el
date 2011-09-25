@@ -25,7 +25,7 @@
   (interactive)
   (if (get-buffer "*slime-repl nil*") 
       (switch-to-buffer "*slime-repl nil*") 
-    (clojure-jack-i09n)))
+    (clojure-jack-in)))
 
 ;; redefine local key bindings (as in netbeans)
 (add-hook 'clojure-mode-hook
